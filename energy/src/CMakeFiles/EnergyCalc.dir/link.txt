@@ -1,0 +1,2 @@
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-ar qc libEnergyCalc.a  CMakeFiles/EnergyCalc.dir/energycalc.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-ranlib libEnergyCalc.a

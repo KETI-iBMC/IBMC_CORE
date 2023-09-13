@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/keti/KETI_BMC/KETI-APP/app/energy/src/energycalc.cpp
+energycalc.hpp
+/home/keti/KETI_BMC/KETI-APP/app/energy/src/energycalc.hpp
+Eigen/Dense
+-
+

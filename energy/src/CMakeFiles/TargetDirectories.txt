@@ -1,0 +1,3 @@
+/home/keti/KETI_BMC/KETI-APP/app/energy/src/CMakeFiles/rebuild_cache.dir
+/home/keti/KETI_BMC/KETI-APP/app/energy/src/CMakeFiles/EnergyCalc.dir
+/home/keti/KETI_BMC/KETI-APP/app/energy/src/CMakeFiles/edit_cache.dir

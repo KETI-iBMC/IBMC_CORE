@@ -1,0 +1,115 @@
+\hypertarget{classEnergyCalc}{}\section{Energy\+Calc Class Reference}
+\label{classEnergyCalc}\index{Energy\+Calc@{Energy\+Calc}}
+
+
+The \hyperlink{classEnergyCalc}{Energy\+Calc} class deals with the relationship between C\+PU usage and power consumption.  
+
+
+
+
+{\ttfamily \#include $<$energycalc.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classEnergyCalc_a6379ce8e645c7c8c2acaca31f4c350ff}{Energy\+Calc} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \hyperlink{classEnergyCalc}{Energy\+Calc} class. \end{DoxyCompactList}\item 
+\hyperlink{classEnergyCalc_aaab4e727de884101dd0523ee331f8326}{Energy\+Calc} (map$<$ double, double $>$ C\+P\+U\+Power\+Map)
+\begin{DoxyCompactList}\small\item\em Constructor for the \hyperlink{classEnergyCalc}{Energy\+Calc} class that initializes the C\+P\+U\+Power\+Map. \end{DoxyCompactList}\item 
+void \hyperlink{classEnergyCalc_a1b883383c88c2ce543eaf4390e9c5ae3}{Set\+C\+P\+U\+Power} (map$<$ double, double $>$ C\+P\+U\+Power\+Map)
+\begin{DoxyCompactList}\small\item\em Sets the C\+P\+U\+Power\+Map with the provided map. \end{DoxyCompactList}\item 
+double \hyperlink{classEnergyCalc_a7b110beba82144d475b2d0fc3040762a}{Calculate\+Power} (double cpu\+Usage)
+\begin{DoxyCompactList}\small\item\em Calculates the power consumption for the given C\+PU usage. \end{DoxyCompactList}\item 
+double \hyperlink{classEnergyCalc_a73932d67b6f571d004d0cebca5b76621}{Calculate\+C\+PU} (double power\+Usage)
+\begin{DoxyCompactList}\small\item\em Calculates the C\+PU usage for the given power consumption. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classEnergyCalc}{Energy\+Calc} class deals with the relationship between C\+PU usage and power consumption. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEnergyCalc_a6379ce8e645c7c8c2acaca31f4c350ff}\label{classEnergyCalc_a6379ce8e645c7c8c2acaca31f4c350ff}} 
+\index{Energy\+Calc@{Energy\+Calc}!Energy\+Calc@{Energy\+Calc}}
+\index{Energy\+Calc@{Energy\+Calc}!Energy\+Calc@{Energy\+Calc}}
+\subsubsection{\texorpdfstring{Energy\+Calc()}{EnergyCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Energy\+Calc\+::\+Energy\+Calc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for the \hyperlink{classEnergyCalc}{Energy\+Calc} class. 
+
+\mbox{\Hypertarget{classEnergyCalc_aaab4e727de884101dd0523ee331f8326}\label{classEnergyCalc_aaab4e727de884101dd0523ee331f8326}} 
+\index{Energy\+Calc@{Energy\+Calc}!Energy\+Calc@{Energy\+Calc}}
+\index{Energy\+Calc@{Energy\+Calc}!Energy\+Calc@{Energy\+Calc}}
+\subsubsection{\texorpdfstring{Energy\+Calc()}{EnergyCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Energy\+Calc\+::\+Energy\+Calc (\begin{DoxyParamCaption}\item[{map$<$ double, double $>$}]{C\+P\+U\+Power\+Map }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \hyperlink{classEnergyCalc}{Energy\+Calc} class that initializes the C\+P\+U\+Power\+Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+P\+U\+Power\+Map} & Map storing C\+PU usage and corresponding power consumption values \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classEnergyCalc_a73932d67b6f571d004d0cebca5b76621}\label{classEnergyCalc_a73932d67b6f571d004d0cebca5b76621}} 
+\index{Energy\+Calc@{Energy\+Calc}!Calculate\+C\+PU@{Calculate\+C\+PU}}
+\index{Calculate\+C\+PU@{Calculate\+C\+PU}!Energy\+Calc@{Energy\+Calc}}
+\subsubsection{\texorpdfstring{Calculate\+C\+P\+U()}{CalculateCPU()}}
+{\footnotesize\ttfamily double Energy\+Calc\+::\+Calculate\+C\+PU (\begin{DoxyParamCaption}\item[{double}]{power\+Usage }\end{DoxyParamCaption})}
+
+
+
+Calculates the C\+PU usage for the given power consumption. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em power\+Usage} & Power consumption value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+C\+PU usage value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEnergyCalc_a7b110beba82144d475b2d0fc3040762a}\label{classEnergyCalc_a7b110beba82144d475b2d0fc3040762a}} 
+\index{Energy\+Calc@{Energy\+Calc}!Calculate\+Power@{Calculate\+Power}}
+\index{Calculate\+Power@{Calculate\+Power}!Energy\+Calc@{Energy\+Calc}}
+\subsubsection{\texorpdfstring{Calculate\+Power()}{CalculatePower()}}
+{\footnotesize\ttfamily double Energy\+Calc\+::\+Calculate\+Power (\begin{DoxyParamCaption}\item[{double}]{cpu\+Usage }\end{DoxyParamCaption})}
+
+
+
+Calculates the power consumption for the given C\+PU usage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpu\+Usage} & C\+PU usage value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Power consumption value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEnergyCalc_a1b883383c88c2ce543eaf4390e9c5ae3}\label{classEnergyCalc_a1b883383c88c2ce543eaf4390e9c5ae3}} 
+\index{Energy\+Calc@{Energy\+Calc}!Set\+C\+P\+U\+Power@{Set\+C\+P\+U\+Power}}
+\index{Set\+C\+P\+U\+Power@{Set\+C\+P\+U\+Power}!Energy\+Calc@{Energy\+Calc}}
+\subsubsection{\texorpdfstring{Set\+C\+P\+U\+Power()}{SetCPUPower()}}
+{\footnotesize\ttfamily void Energy\+Calc\+::\+Set\+C\+P\+U\+Power (\begin{DoxyParamCaption}\item[{map$<$ double, double $>$}]{C\+P\+U\+Power\+Map }\end{DoxyParamCaption})}
+
+
+
+Sets the C\+P\+U\+Power\+Map with the provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+P\+U\+Power\+Map} & Map storing C\+PU usage and corresponding power consumption values \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{energycalc_8hpp}{energycalc.\+hpp}\item 
+src/\hyperlink{energycalc_8cpp}{energycalc.\+cpp}\end{DoxyCompactItemize}
