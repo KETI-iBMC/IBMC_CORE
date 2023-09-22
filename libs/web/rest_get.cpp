@@ -557,15 +557,32 @@ void Ipmiweb_GET::Get_DDNS_Info(json::value &response_json) {
   DNS_INFO["IPV4"] = IPV4;
   response_json["DNS_INFO"] = DNS_INFO;
 }
+std::string ReadBiosVersionFromFile(const std::string &filename) {
+  std::ifstream file(filename);
+
+  // 파일을 열 수 없는 경우 예외 처리
+  if (!file.is_open()) {
+    // throw std::runtime_error("not open file.");
+    return "";
+  }
+
+  std::string biosVersion;
+  getline(file, biosVersion);
+
+  // 파일을 읽을 때 예외 처리
+  if (file.fail()) {
+    return "";
+    // throw std::runtime_error("not open file. error found");
+  }
+
+  return biosVersion;
+}
+
 void Ipmiweb_GET::Get_Sys_Info(json::value &response_json) {
 
   cout << "REST Get System Information" << endl;
-  // printf("ipmi_system_information: %d\n", IPMI_SYSTEM_INFORMATION);
-  // #if IPMI_SYSTEM_INFORMATION
   unsigned char net_priority = 0;
-
   net_priority = get_eth_priority();
-
   // json::value obj = json::value::object();
 
   json::value power_info = json::value::object();
@@ -593,51 +610,23 @@ void Ipmiweb_GET::Get_Sys_Info(json::value &response_json) {
 
   generic["BMC_IP"] = json::value::string(U(ip_str));
   generic["BMC_MAC"] = json::value::string(U(mac_str));
-
+  cout << "generic |" << generic.serialize() << endl;
   // IP, MAC Redfish..
-  string odata = ODATA_MANAGER_ID;
-  odata.append("/EthernetInterfaces");
-  Collection *eth_col = (Collection *)g_record[odata];
-  EthernetInterfaces *eth;
-  bool exist = false;
-
-  // std::vector<Resource *>::iterator iter;
-  // for (iter = eth_col->members.begin(); iter != eth_col->members.end();
-  //      iter++) {
-  //   eth = (EthernetInterfaces *)(*iter);
-  //   if (eth->v_ipv4.size() > 0) {
-  //     if (eth->v_ipv4[0].address != "") {
-  //       exist = true;
-  //       break;
-  //     }
-  //   }
-  // }
-  string _uri = ODATA_ETHERNET_INTERFACE_ID + string("/NIC") + to_string(1);
-  eth = (EthernetInterfaces *)g_record[_uri];
-  if (eth->v_ipv4.size() < 1) {
-    cout << "1 issue" << endl;
-    system("rm -rf /redfish/*");
-    system("systemctl restart KETI-Edge");
-    exit(1);
-  }
-  json::value jv_network;
-  if (exist) {
-    generic["BMC_MAC"] = json::value::string(eth->mac_address);
-    generic["BMC_IP"] = json::value::string(eth->v_ipv4[0].address);
-  }
-
   generic["FRU_VERSION"] = json::value::string(U("1.31"));
   generic["IPMIFW_VERSION"] = json::value::string(U("V2.0"));
-  generic["BIOS_VERSION"] = json::value::string(U("0.01"));
+  cout << "generic2 |" << generic.serialize() << endl;
+  // generic["BIOS_VERSION"] = json::value::string(U("0.01"));
   generic["SDR_VERSION"] = json::value::string(U("0.51"));
-  generic["WEB_VERSION"] = json::value::string(U("1.01"));
-  generic["IPMIFW_BLDTIME"] = json::value::string(U(g_firmware_build_time));
+  generic["BIOS_VERSION"] = json::value::string(
+      U(ReadBiosVersionFromFile("/conf/bios/bios_version")));
 
+  generic["IPMIFW_BLDTIME"] = json::value::string(U(g_firmware_build_time));
   json::value kernel = json::value::object();
   kernel["VERSION"] = json::value::string(U(ipmiApplication.g_kernel_version));
 
   generic_info["GENERIC"] = generic;
   generic_info["KERNEL"] = kernel;
+
   response_json["GENERIC_INFO"] = generic_info;
 }
 void clear_data(uint8_t *data) {
@@ -718,12 +707,11 @@ void Ipmiweb_GET::Get_Lan_Info(json::value &response_json) {
       resource_save_json(cur_eth);
     }
   }
-  cout << "here test1" << endl;
+
   jv_ipv4["IPV4_ADDRESS"] = json::value::string(cur_eth->v_ipv4[0].address);
   jv_ipv4["IPV4_NETMASK"] = json::value::string(cur_eth->v_ipv4[0].subnet_mask);
   jv_ipv4["IPV4_GATEWAY"] = json::value::string(cur_eth->v_ipv4[0].gateway);
   jv_ipv4["IPV4_PREFERRED"] = json::value::string("");
-  cout << "here test2" << endl;
 
   if (cur_eth->v_ipv6.size() == 0) {
     if (cur_eth->v_ipv6.size() < 1) {
@@ -1386,74 +1374,59 @@ void Ipmiweb_GET::Get_Usb_Info(json::value &response_json) {
 //   response.set_status_code(status_codes::OK);
 
 // }
-
+extern Ipmiuser ipmiUser[MAX_USER];
 void Ipmiweb_GET::Get_User_List(json::value &response_json) {
-  //  json::value obj = json::value::object();
-  //     json::value USER = json::value::object();
-  //     vector<json::value> INFO_VEC;
-  //     Ipmiuser temp;
-  //     int last_index = 0;
-  //     int user_cnt = 0;
 
-  //     last_index = user_loading();
-  //     user_cnt = get_user_cnt();
-  //     cout<<"user_cnt " << get_user_cnt()<<endl;
-  //     for (int i = 0; i < user_cnt; i++){
-  //         json::value INFO = json::value::object();
-
-  //         INFO["INDEX"] = json::value::string(U(to_string(i+1)));
-  //         INFO["NAME"] = json::value::string(ipmiUser[i].getUsername());
-  //         INFO["PASSWORD"] =
-  //         json::value::string(ipmiUser[i].getUserpassword());
-  //         INFO["ENABLE_STATUS"] =
-  //         json::value::string(U(to_string(ipmiUser[i].getUserenable())));
-  //         INFO["CALLIN"] =
-  //         json::value::string(U(to_string(ipmiUser[i].getUserCallin())));
-  //         INFO["LINKAUTH"] =
-  //         json::value::string(U(to_string(ipmiUser[i].getUserLinkAuth())));
-  //         INFO["IPMIMSG"] =
-  //         json::value::string(U(to_string(ipmiUser[i].getUserIpmi())));
-  //         INFO["PRIVILEGE"] =
-  //         json::value::string(U(to_string(ipmiUser[i].getUserPriv())));
-
-  //         INFO_VEC.push_back(INFO);
-  //     }
-
-  //     USER["INFO"] = json::value::array(INFO_VEC);
-  //     response_json["USER"] = USER;
-
-  // [테스트] Account 레드피시로 적용
   json::value jv_user, jv_infoArray, jv_account;
   jv_infoArray = json::value::array();
-
-  Collection *account_col = (Collection *)g_record[ODATA_ACCOUNT_ID];
-  for (int i = 0; i < account_col->members.size(); i++) {
-    Account *account = (Account *)account_col->members[i];
-
-    jv_account = json::value::object();
-
-    // Q.값 의미?
-    // jv_account["CALLIN"] = json::value::string("1");
-    // jv_account["IPMIMSG"] = json::value::string("1");
-    // jv_account["LINKAUTH"] = json::value::string("1");
-    jv_account["CALLIN"] = json::value::string(to_string(account->callin));
-    jv_account["IPMIMSG"] = json::value::string(to_string(account->ipmi));
-    jv_account["LINKAUTH"] = json::value::string(to_string(account->link_auth));
-    jv_account["PRIVILEGE"] = json::value::string(to_string(account->priv));
+  for (int i = 0; i < MAX_USER; i++) {
+    jv_account["CALLIN"] = json::value::string(to_string(ipmiUser[i].callin));
+    jv_account["IPMIMSG"] = json::value::string(to_string(ipmiUser[i].ipmi));
+    jv_account["LINKAUTH"] =
+        json::value::string(to_string(ipmiUser[i].link_auth));
+    jv_account["PRIVILEGE"] = json::value::string(to_string(ipmiUser[i].priv));
 
     // string index = to_string(improved_stoi(account->id) + 1);
-    jv_account["INDEX"] = json::value::string(account->id);
+    jv_account["INDEX"] = json::value::string(to_string(i));
 
-    if (account->enabled)
+    if (ipmiUser[i].enable)
       jv_account["ENABLE_STATUS"] = json::value::string("1");
     else
       jv_account["ENABLE_STATUS"] = json::value::string("0");
 
-    jv_account["NAME"] = json::value::string(account->user_name);
-    jv_account["PASSWORD"] = json::value::string(account->password);
+    jv_account["NAME"] = json::value::string(ipmiUser[i].name);
+    jv_account["PASSWORD"] = json::value::string(ipmiUser[i].password);
 
     jv_infoArray[i] = jv_account;
   }
+  // Collection *account_col = (Collection *)g_record[ODATA_ACCOUNT_ID];
+  // for (int i = 0; i < account_col->members.size(); i++) {
+  //   Account *account = (Account *)account_col->members[i];
+
+  //   jv_account = json::value::object();
+
+  //   jv_account["CALLIN"] =
+  //   json::value::string(to_string(account->callin));
+  //   jv_account["IPMIMSG"] =
+  //   json::value::string(to_string(account->ipmi));
+  //   jv_account["LINKAUTH"] =
+  //   json::value::string(to_string(account->link_auth));
+  //   jv_account["PRIVILEGE"] =
+  //   json::value::string(to_string(account->priv));
+
+  //   // string index = to_string(improved_stoi(account->id) + 1);
+  //   jv_account["INDEX"] = json::value::string(account->id);
+
+  //   if (account->enabled)
+  //     jv_account["ENABLE_STATUS"] = json::value::string("1");
+  //   else
+  //     jv_account["ENABLE_STATUS"] = json::value::string("0");
+
+  //   jv_account["NAME"] = json::value::string(account->user_name);
+  //   jv_account["PASSWORD"] = json::value::string(account->password);
+
+  //   jv_infoArray[i] = jv_account;
+  // }
 
   jv_user["INFO"] = jv_infoArray;
   response_json["USER"] = jv_user;

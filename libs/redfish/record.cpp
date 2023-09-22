@@ -9,6 +9,7 @@ static vector<Resource *> gc;
 static set<string> dir_list;
 // ipmi 전용 ///////////////////////
 extern Ipmiuser ipmiUser[MAX_USER];
+extern ServiceRoot *g_service_root;
 extern std::map<uint8_t, std::map<uint8_t, Ipmisdr>> sdr_rec;
 ////////////////////////////////
 /**
@@ -461,7 +462,9 @@ bool record_load_json(void) {
       Manager *manager = new Manager(this_odata_id);
       if (!manager->load_json(j)) {
         log(warning) << "load Manager failed";
-        init_manager(manager, "Manager");
+        // init_manager(g_service_root->manager, "Manager");
+        // record_save_json(manager);
+        cout << "error find kcp 1 " << endl;
       }
       dependency_object.push_back(manager);
       break;
@@ -553,15 +556,15 @@ bool record_load_json(void) {
       if (!account->load_json(j))
         log(warning) << "load Account failed";
       // redfish에서는 1부터시작하나 ipmi는 0부터 시작함
-      Ipmiuser *user =
-          &ipmiUser[stoi(get_current_object_name(this_odata_id, "/"))];
-      user->name = (account->user_name);
-      user->password = (account->password);
-      user->callin = (uint8_t)(account->callin);
-      user->ipmi = (uint8_t)(account->ipmi);
-      user->priv = (uint8_t)(account->priv);
-      usercount++;
-      cout << "usercount++;" << endl;
+      // Ipmiuser *user =
+      //     &ipmiUser[stoi(get_current_object_name(this_odata_id, "/"))];
+      // user->name = (account->user_name);
+      // user->password = (account->password);
+      // user->callin = (uint8_t)(account->callin);
+      // user->ipmi = (uint8_t)(account->ipmi);
+      // user->priv = (uint8_t)(account->priv);
+      // usercount++;
+      // cout << "usercount++;" << endl;
 
       dependency_object.push_back(account);
       break;
@@ -664,8 +667,9 @@ bool record_load_json(void) {
       break;
     }
     default:
-      log(warning) << "NOT IMPLEMETED IN LOAD JSON : " << it->second->odata.id;
-      gc.push_back(it->second);
+      log(warning) << "NOT IMPLEMETED IN LOAD JSON : temp sol "
+                   << it->second->odata.id;
+      gc.push_back(it->second); // bug 발견 kcp 삭제처리
       break;
     }
   }

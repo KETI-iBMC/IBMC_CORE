@@ -27,7 +27,7 @@ set( CMAKE_CXX_COMPILER_LAUNCHER  )
 set( CMAKE_ASM_COMPILER ${GCC})
 #SSP disabled -fno-stack-protector 
 set(CMAKE_CXX_FLAGS " -Wall -w -DBOOST_LOG_DYN_LINK -Wno-psabi -fpermissive -DMG_ENABLE_SSL -DMG_ENABLE_THREADS -DMG_ENABLE_HTTP_WEBSOCKET=0 -DMG_ENABLE_HTTP_STREAMING_MULTIPART -pthread -std=c++11")
-# set(CMAKE_CXX_FLAGS_DEBUG "-O3 -g")
+# set(CMAKE_CXX_FLAGS_DEBUG "-O1 -g")
 message(STATUS "Compiler")
 message(STATUS " - ID       \t: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS " - Version  \t: ${CMAKE_CXX_COMPILER_VERSION}")

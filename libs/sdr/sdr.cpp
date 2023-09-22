@@ -589,7 +589,7 @@ static int t_count = 100;
 void update_sensor_reading() {
   // SIGSEGV 시그널 핸들러 등록
   int ret, rVal;
-
+  // cout << "test kcp 1" << endl;
   int cpu0_flag = 0, cpu1_flag = 0;
   sensor_thresh_t *p_sdr, *t_sdr;
   DBus::BusDispatcher dispatcher;
@@ -597,10 +597,13 @@ void update_sensor_reading() {
   DBus::Connection conn_n = DBus::Connection::SystemBus();
   DBus_Sensor sdr_dbus_sensor =
       DBus_Sensor(conn_n, SERVER_PATH_1, SERVER_NAME_1);
+
   for (auto iter = sdr_rec.begin(); iter != sdr_rec.end(); iter++) {
+
     p_sdr = iter->second.find(iter->first)->second.sdr_get_entry();
 
     rVal = sdr_dbus_sensor.lightning_sensor_read(p_sdr->oem, p_sdr->sensor_num);
+
     p_sdr->nominal = rVal;
 
     if (p_sdr->sensor_num == PDPB_SENSOR_TEMP_CPU0) {
@@ -632,50 +635,27 @@ void sensor_get_reading(ipmi_req_t *request, ipmi_res_t *response,
   sleep(0.1);
   uint8_t param = request->data[0];
   std::map<uint8_t, Ipmisdr>::iterator ptr;
-  int val = 0;
-  DBus::BusDispatcher dispatcher;
-  DBus::default_dispatcher = &dispatcher;
-  DBus::Connection conn_n = DBus::Connection::SystemBus();
-  DBus_Sensor sdr_dbus_sensor =
-      DBus_Sensor(conn_n, SERVER_PATH_1, SERVER_NAME_1);
-  try {
-    val = sdr_dbus_sensor.lightning_sensor_read(FRU_PEB,
-                                                PEB_SENSOR_ADC_P12V_PSU1);
-    dispatcher.leave();
+  uint8_t idx = plat_find_sdr_index(param);
 
-  } catch (const std::exception &e) {
-    log(error) << "sensor_get_reading 1예외 발생: " << e.what();
-    val = -1;
-  }
-
-  if (val >= 0) {
-    uint8_t idx = plat_find_sdr_index(param);
-    cout << "sensor_get_reading idx==" << std::oct << idx << endl;
-    response->cc = CC_SUCCESS;
-
-    try {
-      *data++ = sdr_rec[idx].find(idx)->second.sdr_sensor_read();
-    } catch (const std::exception &e) {
-      log(error) << "sensor_get_reading 2예외 발생: " << e.what();
-    }
-
-    // cout << "sensor reading check ..." << endl;
-    if (sdr_rec[idx].find(idx)->second.sdr_get_analog_flag() !=
-        PSDR_ANALOG_DISABLE)
-      *data++ = 0xc0;
-    else
-      *data++ = 0x0;
-
-    if (response->cc != CC_SUCCESS)
-      response->cc = CC_UNSPECIFIED_ERROR;
-  } else {
-    response->cc = CC_SUCCESS;
+  response->cc = CC_SUCCESS;
+  *data++ = sdr_rec[idx].find(idx)->second.sdr_sensor_read();
+  if (sdr_rec[idx].find(idx)->second.sdr_get_analog_flag() !=
+      PSDR_ANALOG_DISABLE)
+    *data++ = 0xc0;
+  else
     *data++ = 0x0;
-    *data++ = 0x0;
-  }
-  cout << "sensor reading return  ..." << endl;
+
+  if (response->cc != CC_SUCCESS)
+    response->cc = CC_UNSPECIFIED_ERROR;
+
+  //  else
+  //   {
+  //       response->cc = CC_SUCCESS;
+  //       *data++ = 0x0;
+  //       *data++ = 0x0;
+  //   }
+
   *res_len = data - &response->data[0];
-  cout << "sensor reading return  ..." << endl;
 }
 
 void sensor_get_threshod(ipmi_req_t *request, ipmi_res_t *response,
@@ -1287,6 +1267,7 @@ bool redfish_seonsor_sync(sensor_thresh_t *rec) {
     string temp = string(time_string);
     se.reading_time = temp;
     se.reading_type = sensor_tpye2string(rec->sensor_type);
+
     make_sensor(se, flag);
   } catch (const std::exception &) {
     return false;

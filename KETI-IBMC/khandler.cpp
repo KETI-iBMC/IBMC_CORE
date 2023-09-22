@@ -544,16 +544,30 @@ void *timer_handler(void) {
         check_lm75_status(j);
       }
       check_cpu_status();
+
+      std::string directoryPath =
+          "/redfish/v1/Chassis/Sensors"; // 디렉토리 경로 설정
+
+      try {
+        for (const auto &entry : fs::directory_iterator(directoryPath)) {
+          if (fs::is_regular_file(entry)) {
+            if (fs::file_size(entry) == 0) {
+              fs::remove(entry); // 데이터 크기가 0인 파일 삭제
+              std::cout << "Deleted: " << entry.path() << std::endl;
+            }
+          }
+        }
+      } catch (const fs::filesystem_error &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        continue;
+      }
       // dcmi_power_limit_function(); psu 파트 PSU센서 연동후 구현 필요
       log(info) << "update_sensor_reading" << endl;
       try {
+
         update_sensor_reading();
       } catch (const exception &e) {
         std::cerr << "Caught exception: " << e.what() << std::endl;
-        // 예외 처리 로직 추가
-        // 아직없음
-
-        // 프로그램 계속 실행
         continue;
       }
 

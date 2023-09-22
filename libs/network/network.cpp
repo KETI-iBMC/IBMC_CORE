@@ -37,18 +37,21 @@ void Ipminetwork::plat_network_save(void) {
         ether->v_ipv4[0].address = buf;
     }
     cout << "ether->v_ipv4=" << buf << endl;
-    // this->ip_addr.clear();
-    // ip_addr.push_back(ip_addr[0]);
-    // ip_addr.push_back(ip_addr[1]);
-    // ip_addr.push_back(ip_addr[2]);
-    // ip_addr.push_back(ip_addr[3]);
     if (ether->v_ipv4.size() < 1) {
-      system("rm -rf /redfish/*");
-      system("systemctl restart KETI-Edge");
-      exit(1);
+      this->ip_addr.clear();
+      ip_addr.push_back(ip_addr[0]);
+      ip_addr.push_back(ip_addr[1]);
+      ip_addr.push_back(ip_addr[2]);
+      ip_addr.push_back(ip_addr[3]);
     }
+
+    // if (ether->v_ipv4.size() < 1) {
+    //   system("rm -rf /redfish/*");
+    //   system("systemctl restart KETI-Edge");
+    //   exit(1);
+    // }
     ether->v_ipv4[0].address = buf;
-    cout << "test1" << endl;
+
     memset(buf, 0, sizeof(buf));
     if (df_gw_ip_addr.size() > 2) {
       sprintf(buf, "%d.%d.%d.%d", df_gw_ip_addr[0], df_gw_ip_addr[1],
@@ -56,7 +59,7 @@ void Ipminetwork::plat_network_save(void) {
       // if (ether->v_ipv4.size() > 1)
       ether->v_ipv4[0].gateway = buf;
     }
-    cout << "test2" << endl;
+
     memset(buf, 0, sizeof(buf));
     if (net_mask.size() > 2) {
       sprintf(buf, "%d.%d.%d.%d", net_mask[0], net_mask[1], net_mask[2],

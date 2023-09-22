@@ -143,9 +143,11 @@ std::vector<uint8_t> Rmcppacket::rmcp_process_packet() {
               if (ret == -1)
                 return packet_out;
               user_idx = ret;
+              cout << "user_idx = " << user_idx << endl;
               c_password = app_getUserpassword(ret);
               cout << "c_password =" << c_password << endl;
-              cout << "rmcp_rolem =" << rmcp_rolem << endl;
+
+              printf("rmcp_rolem = %d \n", rmcp_rolem);
               if (rmcp_rolem == 0) {
                 ret = app_getUserPriv(c_username, ret);
                 cout << "app_getUserPriv =" << ret << endl;

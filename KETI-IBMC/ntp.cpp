@@ -100,6 +100,8 @@ void get_current_utc_info(string &_utc) {
  * 있음
  */
 void set_time_by_userDate(string _date, string _time) {
+  string cmd_disable_ntp = "timedatectl set-ntp 0";
+  system(cmd_disable_ntp.c_str());
   string cmd = "date -s \"";
 
   if (_date == "")
@@ -271,6 +273,9 @@ void set_localtime_by_userTimezone(string _time) {
  * @return system function return value
  */
 int set_time_by_ntp_server(string _server) {
+
+  string cmd_enable_ntp = "timedatectl set-ntp 1";
+  system(cmd_enable_ntp.c_str());
   int ret_system;
   string cmd = "rdate -s " + _server;
   ret_system = system(cmd.c_str());

@@ -454,6 +454,7 @@ void Handler::handle_get(http_request _request) {
     if (uri_tokens[0] == "sysinfo") {
       cout << " get sysinfo " << endl;
       Ipmiweb_GET::Get_Sys_Info(jv);
+      jv["CODE"] = json::value::string("200");
       rest_response.set_body(jv);
       rest_response.set_status_code(status_codes::OK);
       _request.reply(rest_response);
@@ -472,6 +473,7 @@ void Handler::handle_get(http_request _request) {
       cout << " get sol " << endl;
       // response.set_status_code(status_codes::OK);
       rest_response.set_body(jv);
+
       rest_response.set_status_code(status_codes::OK);
       _request.reply(rest_response);
       return;
@@ -871,6 +873,7 @@ void Handler::handle_put(http_request _request) {
     if (uri_tokens.size() == 1 && uri_tokens[0] == "redfish") {
       json::value j;
       j[U(REDFISH_VERSION)] = json::value::string(U(ODATA_SERVICE_ROOT_ID));
+
       // report_last_command(uri);
       _request.reply(status_codes::OK, j);
       return;

@@ -296,6 +296,11 @@ void Ipmiapplication::app_set_user_passwd(uint8_t *request, uint8_t *response,
     ipmiUser[user_id].setUserAccess(req);
     break;
   case 1: // enable user
+    req->data[0] |= 0x10;
+    req->data[0] |= 0x20;
+    req->data[0] |= 0x40;
+    req->data[0] |= 0x80;
+    req->data[2] = (req->data[2] & 0xF0) | 0x04;
     ipmiUser[user_id].setUserAccess(req);
     break;
   case 2: // set password

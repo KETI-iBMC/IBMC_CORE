@@ -59,6 +59,7 @@ bool Resource::save_json(void) {
 
   if (json_content == "null") {
     log(warning) << "Something Wrong in save json : " << this->odata.id << endl;
+    // delete_resource(this->odata.id);
     return false;
   }
 
@@ -530,69 +531,70 @@ bool AccountService::load_json(json::value &j) {
   return true;
 }
 
-bool AccountService::wrtie_ladap_to_nclcd()
-{
+bool AccountService::wrtie_ladap_to_nclcd() {
   char buf[128];
-	char full_buf[4092];
-	if (access(NSLCD_FILE, F_OK) == 0)
-	    system("rm /etc/nslcd.conf");
-  int fd_write = open(NSLCD_FILE, O_RDWR | O_CREAT , 0700);
-  if(fd_write<0){
-    log(error)<<"wrtie_ladap_to_nclcd error :fd="<<fd_write;
+  char full_buf[4092];
+  if (access(NSLCD_FILE, F_OK) == 0)
+    system("rm /etc/nslcd.conf");
+  int fd_write = open(NSLCD_FILE, O_RDWR | O_CREAT, 0700);
+  if (fd_write < 0) {
+    log(error) << "wrtie_ladap_to_nclcd error :fd=" << fd_write;
     return false;
   }
-  if(this->ldap.service_addresses.size()>=1)
-  {
+  if (this->ldap.service_addresses.size() >= 1) {
     sprintf(buf, "uri ldap://%s\n", this->ldap.service_addresses[0].c_str());
     strcpy(full_buf, buf);
   }
-	
-  if(this->ldap.ldap_service.search_settings.base_distinguished_names.size()>=1)
-  {
-    sprintf(buf, "base %s\n", ldap.ldap_service.search_settings.base_distinguished_names[0].c_str());
-	  strcat(full_buf, buf);
+
+  if (this->ldap.ldap_service.search_settings.base_distinguished_names.size() >=
+      1) {
+    sprintf(
+        buf, "base %s\n",
+        ldap.ldap_service.search_settings.base_distinguished_names[0].c_str());
+    strcat(full_buf, buf);
   }
   sprintf(buf, "binddn %s\n", ldap.authentication.username.c_str());
-	strcat(full_buf, buf);
-  if(ldap.authentication.password.size()==0)
+  strcat(full_buf, buf);
+  if (ldap.authentication.password.size() == 0)
     sprintf(buf, "bindpw %s\n", "null");
   else
-  sprintf(buf, "bindpw %s\n", ldap.authentication.password.c_str());
-	// strcat(full_buf, buf);
-  // sprintf(buf, "timelimit %d\n", ldap_config.timelimit);	
-	strcat(full_buf, buf);
-	write(fd_write, full_buf, strlen(full_buf));
-	close(fd_write);
-  return true ;
-  
+    sprintf(buf, "bindpw %s\n", ldap.authentication.password.c_str());
+  // strcat(full_buf, buf);
+  // sprintf(buf, "timelimit %d\n", ldap_config.timelimit);
+  strcat(full_buf, buf);
+  write(fd_write, full_buf, strlen(full_buf));
+  close(fd_write);
+  return true;
 }
-bool AccountService::write_ad_to_file()
-{
+bool AccountService::write_ad_to_file() {
   char buf[128];
-	char full_buf[4092];
+  char full_buf[4092];
   if (access(NSLCD_FILE, F_OK) == 0)
-	  system("rm /etc/nslcd.conf");
-  
-  int fd_write = open(NSLCD_FILE, O_RDWR | O_CREAT , 0700);
-  if(fd_write<0){
-    log(error)<<"wrtie_ladap_to_nclcd error :fd="<<fd_write;
+    system("rm /etc/nslcd.conf");
+
+  int fd_write = open(NSLCD_FILE, O_RDWR | O_CREAT, 0700);
+  if (fd_write < 0) {
+    log(error) << "wrtie_ladap_to_nclcd error :fd=" << fd_write;
     return false;
   }
-  if(this->active_directory.service_addresses.size()>=1)
-  {
-    sprintf(buf, "uri ldap://%s\ntls_reqcert allow\n", active_directory.service_addresses[0].c_str());
+  if (this->active_directory.service_addresses.size() >= 1) {
+    sprintf(buf, "uri ldap://%s\ntls_reqcert allow\n",
+            active_directory.service_addresses[0].c_str());
     strcpy(full_buf, buf);
   }
   sprintf(buf, "binddn %s\n", active_directory.authentication.username.c_str());
   strcat(full_buf, buf);
-  if(active_directory.authentication.password.size()==0)
+  if (active_directory.authentication.password.size() == 0)
     sprintf(buf, "bindpw %s\n", "null");
   else
-    sprintf(buf, "bindpw %s\n", active_directory.authentication.password.c_str());
+    sprintf(buf, "bindpw %s\n",
+            active_directory.authentication.password.c_str());
   strcat(full_buf, buf);
-  sprintf(buf, "filter     passwd (objectClass=*)\nmap     passwd  uid     sAMAccountName\n");
+  sprintf(buf, "filter     passwd (objectClass=*)\nmap     passwd  uid     "
+               "sAMAccountName\n");
   strcat(full_buf, buf);
-  sprintf(buf, "filter     shadow (objectClass=*)\nmap     shadow  uid     sAMAccountName\n");
+  sprintf(buf, "filter     shadow (objectClass=*)\nmap     shadow  uid     "
+               "sAMAccountName\n");
   strcat(full_buf, buf);
   write(fd_write, full_buf, strlen(full_buf));
   close(fd_write);
@@ -761,24 +763,27 @@ json::value LogService::get_json(void) {
 
   j[U("Id")] = json::value::string(U(this->id));
   j[U("Description")] = json::value::string(U(this->description));
-  j[U("MaxNumberOfRecords")] = json::value::number(U(this->max_number_of_records));
+  j[U("MaxNumberOfRecords")] =
+      json::value::number(U(this->max_number_of_records));
   j[U("OverWritePolicy")] = json::value::string(U(this->overwrite_policy));
   j[U("DateTime")] = json::value::string(U(this->datetime));
-  j[U("DateTimeLocalOffset")] = json::value::string(U(this->datetime_local_offset));
+  j[U("DateTimeLocalOffset")] =
+      json::value::string(U(this->datetime_local_offset));
   j[U("ServiceEnabled")] = json::value::boolean(U(this->service_enabled));
   j[U("LogEntryType")] = json::value::string(U(this->log_entry_type));
 
   j[U("SyslogFilters")] = json::value::array();
-  for(int i=0; i<this->syslogFilters.size(); i++)
-  {
-      json::value filter = json::value::object();
-      filter[U("LogFacilities")] = json::value::array();
+  for (int i = 0; i < this->syslogFilters.size(); i++) {
+    json::value filter = json::value::object();
+    filter[U("LogFacilities")] = json::value::array();
 
-      for (int j = 0; j < this->syslogFilters[i].logFacilities.size(); j++){
-          filter[U("LogFacilities")][j] = json::value::string(this->syslogFilters[i].logFacilities[j]);
-      }
-      filter[U("LowestSeverity")] = json::value::string(U(this->syslogFilters[i].lowestSeverity));
-      j[U("SyslogFilters")][i] = filter;
+    for (int j = 0; j < this->syslogFilters[i].logFacilities.size(); j++) {
+      filter[U("LogFacilities")][j] =
+          json::value::string(this->syslogFilters[i].logFacilities[j]);
+    }
+    filter[U("LowestSeverity")] =
+        json::value::string(U(this->syslogFilters[i].lowestSeverity));
+    j[U("SyslogFilters")][i] = filter;
   }
 
   json::value k;
@@ -809,16 +814,16 @@ bool LogService::load_json(json::value &j) {
 
     json::value syslog_filters;
     get_value_from_json_key(j, "SyslogFilters", syslog_filters);
-    for(auto obj : syslog_filters.as_array()){
-        SyslogFilter temp;
-        json::value log_facilities;
-        
-        get_value_from_json_key(obj, "LogFacilities", log_facilities);
-        for (auto facility : log_facilities.as_array())
-            temp.logFacilities.push_back(facility.as_string());
-          
-        get_value_from_json_key(obj, "LowestSeverity", temp.lowestSeverity);
-        this->syslogFilters.push_back(temp);
+    for (auto obj : syslog_filters.as_array()) {
+      SyslogFilter temp;
+      json::value log_facilities;
+
+      get_value_from_json_key(obj, "LogFacilities", log_facilities);
+      for (auto facility : log_facilities.as_array())
+        temp.logFacilities.push_back(facility.as_string());
+
+      get_value_from_json_key(obj, "LowestSeverity", temp.lowestSeverity);
+      this->syslogFilters.push_back(temp);
     }
 
     status = j.at("Status");
@@ -832,38 +837,36 @@ bool LogService::load_json(json::value &j) {
 }
 
 bool LogService::ClearLog() {
-  try
-  {
+  try {
     if (this->entry == nullptr) {
       log(info) << "Cannot find any logEntry in " << this->odata.id;
       return false;
     }
 
-    //#1 all logentry delete in g_record and memory
+    // #1 all logentry delete in g_record and memory
     vector<Resource *> temp;
 
-    for (int i = 0; i < this->entry->members.size(); i++){
-        temp.push_back(this->entry->members[i]);
-        
-        // all logentry json file delete in LogService folder
-        fs::path target_file(this->entry->members[i]->odata.id + ".json");
+    for (int i = 0; i < this->entry->members.size(); i++) {
+      temp.push_back(this->entry->members[i]);
+
+      // all logentry json file delete in LogService folder
+      fs::path target_file(this->entry->members[i]->odata.id + ".json");
+      log(debug) << target_file;
+      if (fs::exists(target_file)) {
         log(debug) << target_file;
-        if (fs::exists(target_file)){
-            log(debug) << target_file;
-            fs::remove(target_file);
-        }
+        fs::remove(target_file);
+      }
     }
     this->entry->members.clear();
-    
-    for(auto item : temp)
-        delete(item);
+
+    for (auto item : temp)
+      delete (item);
     temp.clear();
     this->record_count = 0;
-    
+
     resource_save_json(this->entry);
 
-  } catch (const std::exception &e)
-  {
+  } catch (const std::exception &e) {
     log(warning) << e.what();
     return false;
   }
@@ -995,14 +998,14 @@ json::value Event::get_json() {
 
   j["Context"] = json::value::string(this->context);
 
-  for (int i = 0; i < this->events.size(); i++){
-      json::value ev = this->events[i].message.get_json();
-      ev["EventId"] = json::value::string(this->events[i].event_id);
-      ev["EventTimeStamp"] = json::value::string(this->events[i].event_timestamp);
-      ev["EventType"] = json::value::string(this->events[i].event_type);
-      ev["MemberId"] = json::value::string(this->events[i].member_id);
+  for (int i = 0; i < this->events.size(); i++) {
+    json::value ev = this->events[i].message.get_json();
+    ev["EventId"] = json::value::string(this->events[i].event_id);
+    ev["EventTimeStamp"] = json::value::string(this->events[i].event_timestamp);
+    ev["EventType"] = json::value::string(this->events[i].event_type);
+    ev["MemberId"] = json::value::string(this->events[i].member_id);
 
-      j["Events"][i] = ev;
+    j["Events"][i] = ev;
   }
 
   // j["Id"] = json::value::string(this->id);
@@ -1024,7 +1027,8 @@ json::value Event::get_json() {
   //   events["MessageId"] = json::value::string(this->events[i].message_id);
 
   //   json::value ooc;
-  //   ooc["@odata.id"] = json::value::string(this->events[i].origin_of_condition);
+  //   ooc["@odata.id"] =
+  //   json::value::string(this->events[i].origin_of_condition);
   //   events["OriginOfCondition"] = ooc;
 
   //   events["MessageArgs"] = json::value::array();
@@ -1037,18 +1041,17 @@ json::value Event::get_json() {
   return j;
 }
 
-json::value SEL::get_json(void)
-{
-    json::value j;
+json::value SEL::get_json(void) {
+  json::value j;
 
-    j = this->message.get_json();
-    j["SensorNumber"] = json::value::number(this->sensor_number);
-    j["SensorType"] = json::value::string(this->sensor_type);
-    j["EntryCode"] = json::value::string(this->entry_code);
-    j["EventTimestamp"] = json::value::string(this->event_timestamp);
-    j["EventType"] = json::value::string(this->event_type);
+  j = this->message.get_json();
+  j["SensorNumber"] = json::value::number(this->sensor_number);
+  j["SensorType"] = json::value::string(this->sensor_type);
+  j["EntryCode"] = json::value::string(this->entry_code);
+  j["EventTimestamp"] = json::value::string(this->event_timestamp);
+  j["EventType"] = json::value::string(this->event_type);
 
-    return j;
+  return j;
 }
 
 bool event_is_exist(const string _uri) {
@@ -1076,8 +1079,8 @@ json::value EventDestination::get_json(void) {
   j[U("Status")] = k;
 
   j[U("EventTypes")] = json::value::array();
-  for(int i=0; i<this->event_types.size(); i++)
-      j[U("EventTypes")][i] = json::value::string(U(this->event_types[i]));
+  for (int i = 0; i < this->event_types.size(); i++)
+    j[U("EventTypes")][i] = json::value::string(U(this->event_types[i]));
 
   return j;
 }
@@ -1096,8 +1099,8 @@ bool EventDestination::load_json(json::value &j) {
     this->protocol = j.at("Protocol").as_string();
 
     event_types = j.at("EventTypes");
-    for(auto str : event_types.as_array())
-        this->event_types.push_back(str.as_string());
+    for (auto str : event_types.as_array())
+      this->event_types.push_back(str.as_string());
 
     status = j.at("Status");
     this->status.state = status.at("State").as_string();
@@ -1150,16 +1153,18 @@ json::value EventService::get_json(void) {
       json::value::boolean(U(this->sse.subordinate_resources));
   j[U("SSEFilterPropertiesSupported")] = j_sse;
 
-
   // smtp
   json::value j_smtp;
   j_smtp["MachineName"] = json::value::string(this->smtp.smtp_machineName);
   j_smtp["SmtpServer"] = json::value::string(this->smtp.smtp_server);
   j_smtp["SmtpUserName"] = json::value::string(this->smtp.smtp_username);
   j_smtp["SmtpPassword"] = json::value::string(this->smtp.smtp_password);
-  j_smtp["SecondSmtpServer"] = json::value::string(this->smtp.smtp_second_server);
-  j_smtp["SecondSmtpUserName"] = json::value::string(this->smtp.smtp_second_username);
-  j_smtp["SecondSmtpPassword"] = json::value::string(this->smtp.smtp_second_username);
+  j_smtp["SecondSmtpServer"] =
+      json::value::string(this->smtp.smtp_second_server);
+  j_smtp["SecondSmtpUserName"] =
+      json::value::string(this->smtp.smtp_second_username);
+  j_smtp["SecondSmtpPassword"] =
+      json::value::string(this->smtp.smtp_second_username);
   j_smtp["SmtpSenderAddress"] =
       json::value::string(this->smtp.smtp_sender_address);
   j_smtp["SmtpPortNumber"] = json::value::number(this->smtp.smtp_port);
@@ -1208,21 +1213,26 @@ bool EventService::load_json(json::value &j) {
 
     get_value_from_json_key(j, "SMTP", smtp);
     get_value_from_json_key(smtp, "MachineName", this->smtp.smtp_machineName);
-    get_value_from_json_key(smtp, "SmtpSenderAddress", this->smtp.smtp_sender_address);
-    get_value_from_json_key(smtp, "SmtpServer", this->smtp.smtp_server);    get_value_from_json_key(smtp, "SmtpUserName", this->smtp.smtp_username);
+    get_value_from_json_key(smtp, "SmtpSenderAddress",
+                            this->smtp.smtp_sender_address);
+    get_value_from_json_key(smtp, "SmtpServer", this->smtp.smtp_server);
+    get_value_from_json_key(smtp, "SmtpUserName", this->smtp.smtp_username);
     get_value_from_json_key(smtp, "SmtpPassword", this->smtp.smtp_password);
 
-    get_value_from_json_key(smtp, "SecondSmtpServer", this->smtp.smtp_second_server);
-    get_value_from_json_key(smtp, "SecondSmtpUserName", this->smtp.smtp_second_username);
-    get_value_from_json_key(smtp, "SecondSmtpPassword", this->smtp.smtp_second_password);
+    get_value_from_json_key(smtp, "SecondSmtpServer",
+                            this->smtp.smtp_second_server);
+    get_value_from_json_key(smtp, "SecondSmtpUserName",
+                            this->smtp.smtp_second_username);
+    get_value_from_json_key(smtp, "SecondSmtpPassword",
+                            this->smtp.smtp_second_password);
     get_value_from_json_key(smtp, "SmtpSSLEnabled",
-                             this->smtp.smtp_smtp_enabled);
+                            this->smtp.smtp_smtp_enabled);
     // get_value_from_json_key(smtp, "SmtpServer", this->smtp.smtp_server);
     // get_value_from_json_key(smtp, "SmtpUserName", this->smtp.smtp_username);
     // get_value_from_json_key(smtp, "SmtpPassword", this->smtp.smtp_password);
     // get_value_from_json_key(smtp, "SmtpSenderAddress",
     //                         this->smtp.smtp_sender_address);
-    this->smtp.smtp_port=smtp.at("SmtpPortNumber").as_integer();
+    this->smtp.smtp_port = smtp.at("SmtpPortNumber").as_integer();
     get_value_from_json_key(smtp, "SmtpPortNumber", this->smtp.smtp_port);
     get_value_from_json_key(smtp, "SmtpSSLEnabled",
                             this->smtp.smtp_smtp_enabled);
@@ -1266,7 +1276,8 @@ json::value EventService::SubmitTestEvent(json::value body) {
     //     e.message_args.push_back(args[i].as_string());
     // }
   }
-  // if (!get_value_from_json_key(body, "OriginOfCondition", e.origin_of_condition))
+  // if (!get_value_from_json_key(body, "OriginOfCondition",
+  // e.origin_of_condition))
   //   e.origin_of_condition = "SubmitTestEvent";
 
   if (!get_value_from_json_key(body, "Severity", e.message.severity))
@@ -1303,12 +1314,12 @@ json::value UpdateService::get_json(void) {
   k[U("Health")] = json::value::string(U(this->status.health));
   j[U("Status")] = k;
 
-  j["FirmwareInventory"] = get_resource_odata_id_json(this->firmware_inventory, this->odata.id);
-  j["SoftwareInventory"] = get_resource_odata_id_json(this->software_inventory, this->odata.id);
-
+  j["FirmwareInventory"] =
+      get_resource_odata_id_json(this->firmware_inventory, this->odata.id);
+  j["SoftwareInventory"] =
+      get_resource_odata_id_json(this->software_inventory, this->odata.id);
 
   j["Actions"] = get_action_info(this->actions);
-
 
   return j;
 }
@@ -1363,7 +1374,8 @@ json::value SoftwareInventory::get_json(void) {
   j[U("ReleaseDate")] = json::value::string(U(this->release_date));
   j[U("Version")] = json::value::string(U(this->version));
   j[U("SoftwareId")] = json::value::string(U(this->software_id));
-  j[U("LowestSupportedVersion")] = json::value::string(U(this->lowest_supported_version));
+  j[U("LowestSupportedVersion")] =
+      json::value::string(U(this->lowest_supported_version));
 
   json::value k;
   k[U("State")] = json::value::string(U(this->status.state));
@@ -2287,23 +2299,41 @@ bool Manager::load_json(json::value &j) {
   json::value status;
 
   try {
+    cout << "1" << endl;
     Resource::load_json(j);
+    cout << "2" << endl;
     this->id = j.at("Id").as_string();
+    cout << "3" << endl;
     this->manager_type = j.at("ManagerType").as_string();
+    cout << "4" << endl;
     this->description = j.at("Description").as_string();
+    cout << "5" << endl;
     this->uuid = j.at("UUID").as_string();
+    cout << "6" << endl;
     this->model = j.at("Model").as_string();
+    cout << "7" << endl;
     this->firmware_version = j.at("FirmwareVersion").as_string();
+    cout << "8" << endl;
     this->kernel_version = j.at("KernelVersion").as_string();
+    cout << "9" << endl;
     this->kernel_buildtime = j.at("KernelBuildTime").as_string();
+    cout << "10" << endl;
     this->datetime = j.at("DateTime").as_string();
+    cout << "11" << endl;
     this->datetime_offset = j.at("DateTimeLocalOffset").as_string();
+    cout << "12" << endl;
     this->power_state = j.at("PowerState").as_string();
-    KETI_define::global_enabler = status.at("GlobaleEnable").as_integer();
+    cout << "13" << endl;
+    KETI_define::global_enabler = j.at("GlobaleEnable").as_integer();
+    cout << "14" << endl;
     status = j.at("Status");
+    cout << "15" << endl;
     this->status.state = status.at("State").as_string();
+    cout << "16" << endl;
     this->status.health = status.at("Health").as_string();
+    cout << "17" << endl;
   } catch (json::json_exception &e) {
+    std::cerr << "JSON 예외 발생: " << e.what() << std::endl;
     return false;
   }
 
@@ -2588,38 +2618,49 @@ json::value NetworkProtocol::get_json(void) {
   ntp[U("ProtocolEnabled")] = json::value::boolean(this->ntp.protocol_enabled);
   ntp["Port"] = json::value::number(this->ntp.port);
   ntp["PrimaryNTPServer"] = json::value::string(this->ntp.primary_ntp_server);
-  ntp["SecondaryNTPServer"] = json::value::string(this->ntp.secondary_ntp_server);
+  ntp["SecondaryNTPServer"] =
+      json::value::string(this->ntp.secondary_ntp_server);
   ntp["Date"] = json::value::string(this->ntp.date_str);
   ntp["Time"] = json::value::string(this->ntp.time_str);
   ntp["TimeZone"] = json::value::string(this->ntp.timezone);
   ntp["NTPServers"] = json::value::array();
   for (unsigned int i = 0; i < this->ntp.ntp_servers.size(); i++)
-      ntp[U("NTPServers")][i] = json::value::string(this->ntp.ntp_servers[i]);
-  j[U("NTP")]=ntp;
+    ntp[U("NTPServers")][i] = json::value::string(this->ntp.ntp_servers[i]);
+  j[U("NTP")] = ntp;
 
-  snmp["AuthenticationProtocol"] = json::value::string(this->snmp.authentication_protocol);
-  snmp["CommunityAccessMode"] = json::value::string(this->snmp.community_access_mode);
+  snmp["AuthenticationProtocol"] =
+      json::value::string(this->snmp.authentication_protocol);
+  snmp["CommunityAccessMode"] =
+      json::value::string(this->snmp.community_access_mode);
   snmp["EnableSNMPv1"] = json::value::boolean(this->snmp.enable_SNMPv1);
   snmp["EnableSNMPv2c"] = json::value::boolean(this->snmp.enable_SNMPv2c);
   snmp["EnableSNMPv3"] = json::value::boolean(this->snmp.enable_SNMPv3);
-  snmp["EncryptionProtocol"] = json::value::string(this->snmp.encryption_protocol);
-  snmp["HideCommunityStrings"] = json::value::boolean(this->snmp.hide_community_strings);
+  snmp["EncryptionProtocol"] =
+      json::value::string(this->snmp.encryption_protocol);
+  snmp["HideCommunityStrings"] =
+      json::value::boolean(this->snmp.hide_community_strings);
   snmp["Port"] = json::value::number(this->snmp.port);
   snmp["ProtocolEnabled"] = json::value::boolean(this->snmp.protocol_enabled);
-  
+
   json::value engine_id = json::value::object();
-  engine_id["ArchitectureId"] = json::value::string(this->snmp.engine_id.architectureId);
-  engine_id["EnterpriseSpecificMethod"] = json::value::string(this->snmp.engine_id.enterpriseSpecificMethod);
-  engine_id["PrivateEnterpriseId"] = json::value::string(this->snmp.engine_id.privateEnterpriseId);
+  engine_id["ArchitectureId"] =
+      json::value::string(this->snmp.engine_id.architectureId);
+  engine_id["EnterpriseSpecificMethod"] =
+      json::value::string(this->snmp.engine_id.enterpriseSpecificMethod);
+  engine_id["PrivateEnterpriseId"] =
+      json::value::string(this->snmp.engine_id.privateEnterpriseId);
   snmp["EngineId"] = engine_id;
 
   snmp["CommunityStrings"] = json::value::array();
-  for(int i=0; i<this->snmp.community_strings.size(); i++){
-      json::value community_string = json::value::object();
-      community_string["AccessMode"] = json::value::string(this->snmp.community_strings[i].access_mode);
-      community_string["CommunityString"] = json::value::string(this->snmp.community_strings[i].community_string);
-      community_string["Name"] = json::value::string(this->snmp.community_strings[i].name);
-      snmp["CommunityStrings"][i] = community_string;
+  for (int i = 0; i < this->snmp.community_strings.size(); i++) {
+    json::value community_string = json::value::object();
+    community_string["AccessMode"] =
+        json::value::string(this->snmp.community_strings[i].access_mode);
+    community_string["CommunityString"] =
+        json::value::string(this->snmp.community_strings[i].community_string);
+    community_string["Name"] =
+        json::value::string(this->snmp.community_strings[i].name);
+    snmp["CommunityStrings"][i] = community_string;
   }
 
   j["SNMP"] = snmp;
@@ -2669,50 +2710,59 @@ bool NetworkProtocol::load_json(json::value &j) {
     get_value_from_json_key(obj, "ProtocolEnabled", this->ssh_enabled);
     get_value_from_json_key(obj, "Port", this->ssh_port);
 
-
     obj = j.at("NTP");
     get_value_from_json_key(obj, "ProtocolEnabled", this->ntp.protocol_enabled);
     get_value_from_json_key(obj, "Port", this->ntp.port);
-    get_value_from_json_key(obj, "PrimaryNTPServer", this->ntp.primary_ntp_server);
-    get_value_from_json_key(obj, "SecondaryNTPServer", this->ntp.secondary_ntp_server);
+    get_value_from_json_key(obj, "PrimaryNTPServer",
+                            this->ntp.primary_ntp_server);
+    get_value_from_json_key(obj, "SecondaryNTPServer",
+                            this->ntp.secondary_ntp_server);
     get_value_from_json_key(obj, "Date", this->ntp.date_str);
     get_value_from_json_key(obj, "Time", this->ntp.time_str);
     get_value_from_json_key(obj, "TimeZone", this->ntp.timezone);
     get_value_from_json_key(obj, "NTPServers", v_netservers);
-    if (v_netservers != json::value::null()){
-        for (auto str : v_netservers.as_array())
-            this->ntp.ntp_servers.push_back(str.as_string());
+    if (v_netservers != json::value::null()) {
+      for (auto str : v_netservers.as_array())
+        this->ntp.ntp_servers.push_back(str.as_string());
     }
 
     obj = j.at("SNMP");
-    get_value_from_json_key(obj, "AuthenticationProtocol", this->snmp.authentication_protocol);
-    get_value_from_json_key(obj, "CommunityAccessMode", this->snmp.community_access_mode);
+    get_value_from_json_key(obj, "AuthenticationProtocol",
+                            this->snmp.authentication_protocol);
+    get_value_from_json_key(obj, "CommunityAccessMode",
+                            this->snmp.community_access_mode);
     get_value_from_json_key(obj, "EnableSNMPv1", this->snmp.enable_SNMPv1);
     get_value_from_json_key(obj, "EnableSNMPv2c", this->snmp.enable_SNMPv2c);
     get_value_from_json_key(obj, "EnableSNMPv3", this->snmp.enable_SNMPv3);
-    get_value_from_json_key(obj, "EncryptionProtocol", this->snmp.encryption_protocol);
-    get_value_from_json_key(obj, "HideCommunityStrings", this->snmp.hide_community_strings);
+    get_value_from_json_key(obj, "EncryptionProtocol",
+                            this->snmp.encryption_protocol);
+    get_value_from_json_key(obj, "HideCommunityStrings",
+                            this->snmp.hide_community_strings);
     get_value_from_json_key(obj, "Port", this->snmp.port);
-    get_value_from_json_key(obj, "ProtocolEnabled", this->snmp.protocol_enabled);
+    get_value_from_json_key(obj, "ProtocolEnabled",
+                            this->snmp.protocol_enabled);
 
     json::value community_strings, engine_id;
 
     get_value_from_json_key(obj, "EngineId", engine_id);
-    get_value_from_json_key(engine_id, "ArchitectureId", this->snmp.engine_id.architectureId);
-    get_value_from_json_key(engine_id, "EnterpriseSpecificMethod", this->snmp.engine_id.enterpriseSpecificMethod);
-    get_value_from_json_key(engine_id, "PrivateEnterpriseId", this->snmp.engine_id.privateEnterpriseId);
+    get_value_from_json_key(engine_id, "ArchitectureId",
+                            this->snmp.engine_id.architectureId);
+    get_value_from_json_key(engine_id, "EnterpriseSpecificMethod",
+                            this->snmp.engine_id.enterpriseSpecificMethod);
+    get_value_from_json_key(engine_id, "PrivateEnterpriseId",
+                            this->snmp.engine_id.privateEnterpriseId);
 
     get_value_from_json_key(obj, "CommunityStrings", community_strings);
-    if (community_strings != json::value::null()){
-        for (auto cs_obj : community_strings.as_array()){
-            Community_String temp;
-            get_value_from_json_key(cs_obj, "AccessMode", temp.access_mode);
-            get_value_from_json_key(cs_obj, "CommunityString", temp.community_string);
-            get_value_from_json_key(cs_obj, "Name", temp.name);
-            this->snmp.community_strings.push_back(temp);
-        }
-    }        
-
+    if (community_strings != json::value::null()) {
+      for (auto cs_obj : community_strings.as_array()) {
+        Community_String temp;
+        get_value_from_json_key(cs_obj, "AccessMode", temp.access_mode);
+        get_value_from_json_key(cs_obj, "CommunityString",
+                                temp.community_string);
+        get_value_from_json_key(cs_obj, "Name", temp.name);
+        this->snmp.community_strings.push_back(temp);
+      }
+    }
 
   } catch (json::json_exception &e) {
     return false;
@@ -2954,7 +3004,7 @@ bool Systems::Reset(json::value body) {
   char cmds[1024] = {
       0,
   };
-  int c_status=0;
+  int c_status = 0;
   // // #1 get systems pid && systems bin file
   // int pid = getpid();
   //     int c_status, res_len = 0;
@@ -2966,33 +3016,28 @@ bool Systems::Reset(json::value body) {
 
   get_value_from_json_key(body, "ResetType", reset_type);
 
-
   if (reset_type == "On") {
     cout << "[!@#$ RESET TYPE !@#$] : On" << endl;
     c_status = 0x1;
-
   }
   if (reset_type == "ForceOff") {
     cout << "[!@#$ RESET TYPE !@#$] : ForceOff" << endl;
-     c_status = 0x0;
+    c_status = 0x0;
   }
   if (reset_type == "GracefulShutdown") {
     cout << "[!@#$ RESET TYPE !@#$] : GracefulShutdown" << endl;
     c_status = 0x6;
-
   }
   if (reset_type == "GracefulRestart") {
     cout << "[!@#$ RESET TYPE !@#$] : GracefulRestart" << endl;
     c_status = 0x2;
-
   }
   if (reset_type == "ForceRestart") {
     cout << "[!@#$ RESET TYPE !@#$] : ForceRestart" << endl;
     c_status = 0x3;
-
   }
   if (reset_type == "Nmi") {
-    
+
     // /proc/sys/kernel/nmi_watchdog flag를 1로 체인지.. 현재 해당 파일 없음.
     // buildroot 환경설정?
   }
@@ -3000,15 +3045,15 @@ bool Systems::Reset(json::value body) {
     cout << "[!@#$ RESET TYPE !@#$] : ForceOn" << endl;
     c_status = 0x3;
   }
-  
-      ipmi_req_t *req;
-      req->netfn_lun = 0;
-      req->cmd = CMD_SET_POWER_STATUS;
-      req->data[0] = c_status;
-       uint8_t response[50];
-       int res_len=0;
-      ipmiChassis.chassis_control((ipmi_req_t *)req, (ipmi_res_t *)response,
-                                (uint8_t *)res_len);
+
+  ipmi_req_t *req;
+  req->netfn_lun = 0;
+  req->cmd = CMD_SET_POWER_STATUS;
+  req->data[0] = c_status;
+  uint8_t response[50];
+  int res_len = 0;
+  ipmiChassis.chassis_control((ipmi_req_t *)req, (ipmi_res_t *)response,
+                              (uint8_t *)res_len);
 
   return true;
 }
@@ -4251,8 +4296,7 @@ json::value VirtualMedia::EjectMedia(void) {
     string extract = id.substr(2);
     id_num = stoi(extract);
     delete_numset_num(ALLOCATE_VM_CD_NUM, id_num);
-  }
-  else if (this->media_type[0] == "USBStick") {
+  } else if (this->media_type[0] == "USBStick") {
     string id = this->id;
     string extract = id.substr(3);
     id_num = stoi(extract);
@@ -4291,137 +4335,125 @@ static int umount() {
 }
 // dy : virtual media end
 
-
 // message & message registry start
-json::value Message::get_json(void)
-{
-    json::value j;
+json::value Message::get_json(void) {
+  json::value j;
 
-    j["Message"] = json::value::string(this->message);
+  j["Message"] = json::value::string(this->message);
 
-    j["MessageArgs"] = json::value::array();
-    for (int i = 0; i < this->message_args.size(); i++){
-        j["MessageArgs"][i] = json::value::string(this->message_args[i]);
-    }
-    
-    j["MessageId"] = json::value::string(this->id);
-    j["MessageSeverity"] = json::value::string(this->severity);
-    j["Resolution"] = json::value::string(this->resolution);
+  j["MessageArgs"] = json::value::array();
+  for (int i = 0; i < this->message_args.size(); i++) {
+    j["MessageArgs"][i] = json::value::string(this->message_args[i]);
+  }
 
-    return j;
+  j["MessageId"] = json::value::string(this->id);
+  j["MessageSeverity"] = json::value::string(this->severity);
+  j["Resolution"] = json::value::string(this->resolution);
+
+  return j;
 }
 
 // Message구조체에서 Message, MessageArgs, MessageId만 취급하는 get_json
 // logentry에서 사용
-void Message::get_specific_json(json::value &j)
-{
-    j["Message"] = json::value::string(this->message);
+void Message::get_specific_json(json::value &j) {
+  j["Message"] = json::value::string(this->message);
 
-    j["MessageArgs"] = json::value::array();
-    for (int i = 0; i < this->message_args.size(); i++){
-        j["MessageArgs"][i] = json::value::string(this->message_args[i]);
-    }
-    
-    j["MessageId"] = json::value::string(this->id);
+  j["MessageArgs"] = json::value::array();
+  for (int i = 0; i < this->message_args.size(); i++) {
+    j["MessageArgs"][i] = json::value::string(this->message_args[i]);
+  }
 
-    return;
+  j["MessageId"] = json::value::string(this->id);
+
+  return;
 }
 
-void Message::load_json(json::value &j)
-{
-    get_value_from_json_key(j, "Message", this->message);
-    get_value_from_json_key(j, "MessageId", this->id);
-    get_value_from_json_key(j, "MessageSeverity", this->severity);
-    get_value_from_json_key(j, "Resolution", this->resolution);
-    
-    json::value args;
-    get_value_from_json_key(j, "MessageArgs", args);
-    this->message_args.clear();
-    for (auto val : args.as_array())
-        this->message_args.push_back(val.as_string());
-    return;
+void Message::load_json(json::value &j) {
+  get_value_from_json_key(j, "Message", this->message);
+  get_value_from_json_key(j, "MessageId", this->id);
+  get_value_from_json_key(j, "MessageSeverity", this->severity);
+  get_value_from_json_key(j, "Resolution", this->resolution);
+
+  json::value args;
+  get_value_from_json_key(j, "MessageArgs", args);
+  this->message_args.clear();
+  for (auto val : args.as_array())
+    this->message_args.push_back(val.as_string());
+  return;
 }
 
-void Message::load_specific_json(json::value &j)
-{
-    get_value_from_json_key(j, "Message", this->message);
-    get_value_from_json_key(j, "MessageId", this->id);
+void Message::load_specific_json(json::value &j) {
+  get_value_from_json_key(j, "Message", this->message);
+  get_value_from_json_key(j, "MessageId", this->id);
 
-    json::value args;
-    get_value_from_json_key(j, "MessageArgs", args);
-    this->message_args.clear();
-    for (auto val : args.as_array())
-        this->message_args.push_back(val.as_string());
-    return;
+  json::value args;
+  get_value_from_json_key(j, "MessageArgs", args);
+  this->message_args.clear();
+  for (auto val : args.as_array())
+    this->message_args.push_back(val.as_string());
+  return;
 }
 
-json::value Message_For_Registry::get_json(void)
-{
-    // json::value k;
+json::value Message_For_Registry::get_json(void) {
+  // json::value k;
 
-    json::value k;
-    k[("Description")] = json::value::string(this->description);
-    k[("Message")] = json::value::string(this->message);
-    k[("Severity")] = json::value::string(this->severity);
-    k[("Resolution")] = json::value::string(this->resolution);
-    k[("NumberOfArgs")] = json::value::number(this->number_of_args);
-    k[("ParamTypes")] = json::value::array();
-    for(int i=0; i<this->param_types.size(); i++)
-    {
-        k[("ParamTypes")][i] = json::value::string(this->param_types[i]);
-    }
-    
-    // j[this->pattern] = k;
-    return k;
+  json::value k;
+  k[("Description")] = json::value::string(this->description);
+  k[("Message")] = json::value::string(this->message);
+  k[("Severity")] = json::value::string(this->severity);
+  k[("Resolution")] = json::value::string(this->resolution);
+  k[("NumberOfArgs")] = json::value::number(this->number_of_args);
+  k[("ParamTypes")] = json::value::array();
+  for (int i = 0; i < this->param_types.size(); i++) {
+    k[("ParamTypes")][i] = json::value::string(this->param_types[i]);
+  }
+
+  // j[this->pattern] = k;
+  return k;
 }
 
-json::value MessageRegistry::get_json(void)
-{
-    auto j = this->Resource::get_json();
-    if (j.is_null())
-        return j;
-
-    j[U("Id")] = json::value::string(U(this->id));
-    j[U("Language")] = json::value::string(U(this->language));
-    j[U("RegistryPrefix")] = json::value::string(U(this->registry_prefix));
-    j[U("RegistryVersion")] = json::value::string(U(this->registry_version));
-
-    json::value messages;
-    for(int i=0; i<this->messages.v_msg.size(); i++)
-    {
-        Message_For_Registry msg = this->messages.v_msg[i];
-        messages[U(msg.pattern)] = msg.get_json();
-        // messages[U(msg.id)] = msg.get_json();
-    }
-
-    j[U("Messages")] = messages;
-
+json::value MessageRegistry::get_json(void) {
+  auto j = this->Resource::get_json();
+  if (j.is_null())
     return j;
+
+  j[U("Id")] = json::value::string(U(this->id));
+  j[U("Language")] = json::value::string(U(this->language));
+  j[U("RegistryPrefix")] = json::value::string(U(this->registry_prefix));
+  j[U("RegistryVersion")] = json::value::string(U(this->registry_version));
+
+  json::value messages;
+  for (int i = 0; i < this->messages.v_msg.size(); i++) {
+    Message_For_Registry msg = this->messages.v_msg[i];
+    messages[U(msg.pattern)] = msg.get_json();
+    // messages[U(msg.id)] = msg.get_json();
+  }
+
+  j[U("Messages")] = messages;
+
+  return j;
 }
 
-bool MessageRegistry::load_json(json::value &j)
-{
-    try
-    {
-        Resource::load_json(j);
-        this->id = j.at("Id").as_string();
-        this->language = j.at("Language").as_string();
-        this->registry_prefix = j.at("RegistryPrefix").as_string();
-        this->registry_version = j.at("RegistryVersion").as_string();
+bool MessageRegistry::load_json(json::value &j) {
+  try {
+    Resource::load_json(j);
+    this->id = j.at("Id").as_string();
+    this->language = j.at("Language").as_string();
+    this->registry_prefix = j.at("RegistryPrefix").as_string();
+    this->registry_version = j.at("RegistryVersion").as_string();
 
-        // 이 외에 this->messages에 들어갈 Message vector요소들은 키워드(pattern)을 일일이
-        // hasfield같은걸로 찾아서 읽은다음 거기서 Message 구조체에 담고 그걸 messages.v_msg에 push_back해주는식
-        // 으로 구현해야함 아직 들어갈 키워드(패턴)들이 지정되지 않아서 자리만 만들어둠
-        // for(int i = 0; i < this->messages.v_msg.size(); i++){
-        //     this->messages.v_msg[i].load_json(j);
-        // }
-    }
-    catch(json::json_exception &e)
-    {
-        return false;
-    }
-    
-    return true;
+    // 이 외에 this->messages에 들어갈 Message vector요소들은 키워드(pattern)을
+    // 일일이 hasfield같은걸로 찾아서 읽은다음 거기서 Message 구조체에 담고 그걸
+    // messages.v_msg에 push_back해주는식 으로 구현해야함 아직 들어갈
+    // 키워드(패턴)들이 지정되지 않아서 자리만 만들어둠 for(int i = 0; i <
+    // this->messages.v_msg.size(); i++){
+    //     this->messages.v_msg[i].load_json(j);
+    // }
+  } catch (json::json_exception &e) {
+    return false;
+  }
+
+  return true;
 }
 // message registry end
 
@@ -4469,8 +4501,10 @@ bool MessageRegistry::load_json(json::value &j)
 //     this->registry_prefix = j.at("RegistryPrefix").as_string();
 //     this->registry_version = j.at("RegistryVersion").as_string();
 
-//     // 이 외에 this->messages에 들어갈 Message vector요소들은 키워드(pattern)을
-//     // 일일이 hasfield같은걸로 찾아서 읽은다음 거기서 Message 구조체에 담고 그걸
+//     // 이 외에 this->messages에 들어갈 Message vector요소들은
+//     키워드(pattern)을
+//     // 일일이 hasfield같은걸로 찾아서 읽은다음 거기서 Message 구조체에 담고
+//     그걸
 //     // messages.v_msg에 push_back해주는식 으로 구현해야함 아직 들어갈
 //     // 키워드(패턴)들이 지정되지 않아서 자리만 만들어둠
 
@@ -4585,7 +4619,7 @@ string get_session_odata_id_by_token(string _token) {
 }
 
 const std::string currentDateTime() {
-  time_t now = time(0); //현재 시간을 time_t 타입으로 저장
+  time_t now = time(0); // 현재 시간을 time_t 타입으로 저장
   struct tm tstruct;
   char buf[80];
   tstruct = *localtime(&now);
@@ -4818,15 +4852,21 @@ void execute_iptables(NetworkProtocol *_net, int _index, string _op) {
 
   case SNMP_INDEX:
     if (_net->snmp.protocol_enabled == true) {
-      cmd_input = make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp.port, 0);
-      cmd_output = make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX, _net->snmp.port, 0);
-      // cmd_input = make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp_port, 0);
-      // cmd_output = make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX, _net->snmp_port, 0);
+      cmd_input =
+          make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp.port, 0);
+      cmd_output =
+          make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX, _net->snmp.port, 0);
+      // cmd_input = make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp_port,
+      // 0); cmd_output = make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX,
+      // _net->snmp_port, 0);
     } else {
-      cmd_input = make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp.port, 1);
-      cmd_output = make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX, _net->snmp.port, 1);
-      // cmd_input = make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp_port, 1);
-      // cmd_output = make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX, _net->snmp_port, 1);
+      cmd_input =
+          make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp.port, 1);
+      cmd_output =
+          make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX, _net->snmp.port, 1);
+      // cmd_input = make_iptable_cmd(_op, "INPUT", SNMP_INDEX, _net->snmp_port,
+      // 1); cmd_output = make_iptable_cmd(_op, "OUTPUT", SNMP_INDEX,
+      // _net->snmp_port, 1);
     }
     break;
 
@@ -4887,14 +4927,18 @@ void execute_iptables(NetworkProtocol *_net, int _index, string _op) {
   case NTP_INDEX:
     if (_net->ntp.protocol_enabled == true) {
       cmd_input = make_iptable_cmd(_op, "INPUT", NTP_INDEX, _net->ntp.port, 0);
-      cmd_output = make_iptable_cmd(_op, "OUTPUT", NTP_INDEX, _net->ntp.port, 0);
-      // cmd_input = make_iptable_cmd(_op, "INPUT", NTP_INDEX, _net->ntp_port, 0);
-      // cmd_output = make_iptable_cmd(_op, "OUTPUT", NTP_INDEX, _net->ntp_port, 0);
+      cmd_output =
+          make_iptable_cmd(_op, "OUTPUT", NTP_INDEX, _net->ntp.port, 0);
+      // cmd_input = make_iptable_cmd(_op, "INPUT", NTP_INDEX, _net->ntp_port,
+      // 0); cmd_output = make_iptable_cmd(_op, "OUTPUT", NTP_INDEX,
+      // _net->ntp_port, 0);
     } else {
       cmd_input = make_iptable_cmd(_op, "INPUT", NTP_INDEX, _net->ntp.port, 1);
-      cmd_output = make_iptable_cmd(_op, "OUTPUT", NTP_INDEX, _net->ntp.port, 1);
-      // cmd_input = make_iptable_cmd(_op, "INPUT", NTP_INDEX, _net->ntp_port, 1);
-      // cmd_output = make_iptable_cmd(_op, "OUTPUT", NTP_INDEX, _net->ntp_port, 1);
+      cmd_output =
+          make_iptable_cmd(_op, "OUTPUT", NTP_INDEX, _net->ntp.port, 1);
+      // cmd_input = make_iptable_cmd(_op, "INPUT", NTP_INDEX, _net->ntp_port,
+      // 1); cmd_output = make_iptable_cmd(_op, "OUTPUT", NTP_INDEX,
+      // _net->ntp_port, 1);
     }
     break;
   default:
@@ -4949,11 +4993,12 @@ void make_sensor(SensorMake _sm, uint16_t _flag) {
   string odata = ODATA_CHASSIS_ID;
   odata = odata + "/Sensors/";
   odata = odata + _sm.id;
+  Sensor *sensor = nullptr;
 
-  Sensor *sensor;
   if (record_is_exist(odata)) {
-    sensor = (Sensor *)g_record[odata];
+    sensor = static_cast<Sensor *>(g_record[odata]);
   } else {
+
     sensor = new Sensor(odata, _sm.id);
     string col_odata = get_parent_object_uri(odata, "/");
     Collection *col = nullptr;
@@ -4968,8 +5013,12 @@ void make_sensor(SensorMake _sm, uint16_t _flag) {
     col->add_member(sensor);
     resource_save_json(col);
   }
-
+  if (sensor == nullptr)
+    cout << "error found sensor == nullptr " << endl;
+  else {
+  }
   sensor->reading_type = _sm.reading_type;
+
   sensor->reading_time = _sm.reading_time;
   sensor->reading = _sm.reading;
   if (_flag & 0x1) {
@@ -5046,5 +5095,6 @@ void make_sensor(SensorMake _sm, uint16_t _flag) {
     // cout << "0100 0000 0000 0000" << endl;
     sensor->status.health = _sm.status.health;
   }
+
   resource_save_json(sensor);
 }

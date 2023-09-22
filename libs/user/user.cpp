@@ -55,7 +55,7 @@ void make_user_db() {
               "WHERE id=\"%d\";",
               ipmiUser[i].name.c_str(), ipmiUser[i].password.c_str(),
               ipmiUser[i].enable, ipmiUser[i].ipmi, ipmiUser[i].priv,
-              ipmiUser[i].link_auth, ipmiUser[i].callin, i);
+              ipmiUser[i].link_auth, ipmiUser[i].callin, i + 1);
       sqlite3_exec(db, query, 0, 0, &err_msg);
     }
   }
@@ -72,11 +72,19 @@ Ipmiuser ipmiUser[MAX_USER];
  */
 void Ipmiuser::setUserAccess(ipmi_req_t *request) {
   uint8_t en = request->data[0] & 0x80 ? 1 : 0;
+  printf("setUserAccess = 0x0%x,\n", request->data[0]);
+  printf("en = %d \n", en);
   if (en) {
     this->ipmi = request->data[0] & 0x10 ? 1 : 0;
     this->link_auth = request->data[0] & 0x20 ? 1 : 0;
     this->callin = request->data[0] & 0x40 ? 1 : 0;
     this->priv = request->data[2] & 0x0F;
+    this->enable = 1;
+    printf("this->ipmi =%d \n", this->ipmi);
+    printf("this->link_auth =%d \n", this->link_auth);
+    printf("this->callin =%d \n", this->callin);
+    printf("this->priv =%d \n", this->priv);
+    printf("this->enable =%d \n", this->enable);
   } else {
     this->priv = request->data[2] & 0x0F;
   }
@@ -296,6 +304,10 @@ void plat_user_save(void) {
       account->ipmi = (int)user->ipmi;
       account->link_auth = (int)user->link_auth;
       account->priv = (int)user->priv;
+      if ((int)user->enable)
+        account->enabled = true;
+      else
+        account->enabled = false;
       resource_save_json(account);
     }
   }
@@ -493,11 +505,33 @@ int user_loading(void) {
         // Handle the error appropriately
       }
 
-      // Similar try-catch blocks for link_auth and callin parsing...
+      sprintf(query, "SELECT link_auth FROM Usertable WHERE id=\"%s\";",
+              to_string(i + 1).c_str());
+      sqlite3_exec(db, query, name_callback, &link_auth, &err_msg);
+      try {
+        ipmiUser[i].link_auth = stoi(link_auth);
+      } catch (const std::exception &e) {
+        // Handle stoi exception
+        std::cerr << "Error parsing link_auth value for user " << i << ": "
+                  << e.what() << std::endl;
+        // Handle the error appropriately
+      }
+      sprintf(query, "SELECT callin FROM Usertable WHERE id=\"%s\";",
+              to_string(i + 1).c_str());
+      sqlite3_exec(db, query, name_callback, &callin, &err_msg);
+      try {
+        ipmiUser[i].callin = stoi(callin);
+      } catch (const std::exception &e) {
+        // Handle stoi exception
+        std::cerr << "Error parsing callin value for user " << i << ": "
+                  << e.what() << std::endl;
+        // Handle the error appropriately
+      }
     }
     for (int i = 0; i < get_user_cnt(); i++) {
       ipmiUser[i].printUserInfo();
     }
+    plat_user_save();
     log(info) << "user_loading complete";
     return 10;
   }
