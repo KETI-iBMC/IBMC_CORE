@@ -1,5 +1,5 @@
 libs/CMakeFiles/apps.dir/redfish/resource.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/redfish/resource.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/redfish/resource.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/condition_variable \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/chrono \
@@ -186,8 +186,8 @@ libs/CMakeFiles/apps.dir/redfish/resource.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/ext/aligned_buffer.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/ext/concurrence.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/mutex \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/redfish/resource.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/apps.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/redfish/resource.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/apps.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/cpprest/http_listener.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/cpprest/http_msg.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/cpprest/asyncrt_utils.h \
@@ -1059,10 +1059,10 @@ libs/CMakeFiles/apps.dir/redfish/resource.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/thread \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/std_thread.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/this_thread_sleep.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/channel.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/common.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/channel.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/common.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/uuid/uuid.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/ipmi.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/ipmi.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/log/core.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/log/detail/config.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/predef/os.h \
@@ -2403,9 +2403,9 @@ libs/CMakeFiles/apps.dir/redfish/resource.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/log/sinks/sink.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/thread/tss.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/log/keywords/scan_method.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/KETI_stdx.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/KETI_stdx.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/net/route.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/chassis.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/chassis.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/gpiod.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bitset \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/gpiod.h \
@@ -2414,23 +2414,23 @@ libs/CMakeFiles/apps.dir/redfish/resource.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/kernel.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/sysinfo.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/const.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/efte.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/pef_policy.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/sel.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/event_string.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/fru.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/network.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/efte.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/pef_policy.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/sel.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/event_string.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/fru.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/network.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/net/if_arp.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/sdr.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/setting_service.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/sensor_define.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/util/iniparser.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/sdr.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/setting_service.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/sensor_define.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/util/iniparser.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/iomanip \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/session.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/user.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/dcmi.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/redfish/hwcontrol.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/redfish/stdafx.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/session.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/user.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/dcmi.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/redfish/hwcontrol.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/redfish/stdafx.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/set \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/stl_set.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/stl_multiset.h \
@@ -2859,4 +2859,4 @@ libs/CMakeFiles/apps.dir/redfish/resource.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/bits/statfs-32.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/i2c-dev.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/i2c.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/redfish/ntp.hpp
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/redfish/ntp.hpp

@@ -1,0 +1,3 @@
+/home/keti/KETI_BMC/KETI-APP/app/KETI-Edge/CMakeFiles/rebuild_cache.dir
+/home/keti/KETI_BMC/KETI-APP/app/KETI-Edge/CMakeFiles/KETI-Edge.dir
+/home/keti/KETI_BMC/KETI-APP/app/KETI-Edge/CMakeFiles/edit_cache.dir

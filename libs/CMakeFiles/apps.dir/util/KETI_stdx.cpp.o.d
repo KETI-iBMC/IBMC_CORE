@@ -1,7 +1,7 @@
 libs/CMakeFiles/apps.dir/util/KETI_stdx.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/util/KETI_stdx.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/util/KETI_stdx.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/KETI_stdx.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/KETI_stdx.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/condition_variable \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/chrono \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/ratio \

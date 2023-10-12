@@ -1,5 +1,5 @@
 libs/CMakeFiles/apps.dir/util/pmbus.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/util/pmbus.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/util/pmbus.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/string.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/bits/libc-header-start.h \
@@ -96,4 +96,4 @@ libs/CMakeFiles/apps.dir/util/pmbus.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/alloca.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/bits/stdlib-float.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/std_abs.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/util/pmbus.hpp
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/util/pmbus.hpp

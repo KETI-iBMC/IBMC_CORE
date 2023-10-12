@@ -200,3 +200,424 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+The target system is: Linux -  - 
+The host system is: Linux - 5.4.0-150-generic - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++ -march=armv7-a;-mfpu=vfpv4-d16;-mfloat-abi=hard;--sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f34e5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f34e5.dir/build.make CMakeFiles/cmTC_f34e5.dir/build
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감
+Building CXX object CMakeFiles/cmTC_f34e5.dir/testCXXCompiler.cxx.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi     -o CMakeFiles/cmTC_f34e5.dir/testCXXCompiler.cxx.o -c /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_f34e5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f34e5.dir/link.txt --verbose=1
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi       -rdynamic CMakeFiles/cmTC_f34e5.dir/testCXXCompiler.cxx.o  -o cmTC_f34e5 
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 나감
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_947d0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_947d0.dir/build.make CMakeFiles/cmTC_947d0.dir/build
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감
+Building CXX object CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi     -o CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_947d0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_947d0.dir/link.txt --verbose=1
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi      -v -rdynamic CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_947d0 
+Using built-in specs.
+COLLECT_GCC=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++
+COLLECT_LTO_WRAPPER=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/lto-wrapper
+Target: arm-openbmc-linux-gnueabi
+Configured with: ../../../../../../work-shared/gcc-11.2.0-r0/gcc-11.2.0/configure --build=x86_64-linux --host=x86_64-oesdk-linux --target=arm-openbmc-linux-gnueabi --prefix=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr --exec_prefix=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr --bindir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi --sbindir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi --libexecdir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi --datadir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/share --sysconfdir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/etc --sharedstatedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/com --localstatedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/var --libdir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi --includedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/include --oldincludedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/include --infodir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/share/info --mandir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/home/keti/ServerBMC_V3.01/build/archercity/tmp/work/x86_64-nativesdk-oesdk-linux/gcc-cross-canadian-arm/11.2.0-r0/recipe-sysroot --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --enable-multilib --enable-default-pie --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=arm-openbmc-linux-gnueabi- --without-local-prefix --disable-install-libiberty --disable-libssp --enable-libitm --enable-lto --disable-bootstrap --with-system-zlib --with-linker-hash-style=gnu --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --without-isl --with-gxx-include-dir=/not/exist/usr/include/c++/11.2.0 --with-build-time-tools=/home/keti/ServerBMC_V3.01/build/archercity/tmp/work/x86_64-nativesdk-oesdk-linux/gcc-cross-canadian-arm/11.2.0-r0/recipe-sysroot-native/usr/arm-openbmc-linux-gnueabi/bin --with-sysroot=/not/exist --with-build-sysroot=/home/keti/ServerBMC_V3.01/build/archercity/tmp/work/x86_64-nativesdk-oesdk-linux/gcc-cross-canadian-arm/11.2.0-r0/recipe-sysroot --enable-standard-branch-protection --enable-poison-system-directories --disable-static --enable-nls --with-glibc-version=2.28 --enable-initfini-array
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.2.0 (GCC) 
+COMPILER_PATH=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/
+LIBRARY_PATH=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib/:/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/
+COLLECT_GCC_OPTIONS='--sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi'  '-mfpu=vfpv4-d16' '-mfloat-abi=hard' '-v' '-rdynamic' '-o' 'cmTC_947d0' '-shared-libgcc' '-mtls-dialect=gnu' '-marm' '-mlibarch=armv7-a+vfpv4-d16' '-march=armv7-a+vfpv4-d16' '-dumpdir' 'cmTC_947d0.'
+ /home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/collect2 -plugin /home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/liblto_plugin.so -plugin-opt=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFQ9YKj.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi --build-id --eh-frame-hdr --hash-style=gnu -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -pie -o cmTC_947d0 /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/Scrt1.o /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/crti.o /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/crtbeginS.o -L/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0 -L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib -L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0 -L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/crtendS.o /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/crtn.o
+COLLECT_GCC_OPTIONS='--sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi'  '-mfpu=vfpv4-d16' '-mfloat-abi=hard' '-v' '-rdynamic' '-o' 'cmTC_947d0' '-shared-libgcc' '-mtls-dialect=gnu' '-marm' '-mlibarch=armv7-a+vfpv4-d16' '-march=armv7-a+vfpv4-d16' '-dumpdir' 'cmTC_947d0.'
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 나감
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-openbmc-linux-gnueabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_947d0/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_947d0.dir/build.make CMakeFiles/cmTC_947d0.dir/build]
+  ignore line: [make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감]
+  ignore line: [Building CXX object CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi     -o CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_947d0]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_947d0.dir/link.txt --verbose=1]
+  ignore line: [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi      -v -rdynamic CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_947d0 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/lto-wrapper]
+  ignore line: [Target: arm-openbmc-linux-gnueabi]
+  ignore line: [Configured with: ../../../../../../work-shared/gcc-11.2.0-r0/gcc-11.2.0/configure --build=x86_64-linux --host=x86_64-oesdk-linux --target=arm-openbmc-linux-gnueabi --prefix=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr --exec_prefix=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr --bindir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi --sbindir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi --libexecdir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi --datadir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/share --sysconfdir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/etc --sharedstatedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/com --localstatedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/var --libdir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi --includedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/include --oldincludedir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/include --infodir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/share/info --mandir=/usr/local/oe-sdk-hardcoded-buildpath/sysroots/x86_64-oesdk-linux/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/home/keti/ServerBMC_V3.01/build/archercity/tmp/work/x86_64-nativesdk-oesdk-linux/gcc-cross-canadian-arm/11.2.0-r0/recipe-sysroot --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --enable-multilib --enable-default-pie --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=arm-openbmc-linux-gnueabi- --without-local-prefix --disable-install-libiberty --disable-libssp --enable-libitm --enable-lto --disable-bootstrap --with-system-zlib --with-linker-hash-style=gnu --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --without-isl --with-gxx-include-dir=/not/exist/usr/include/c++/11.2.0 --with-build-time-tools=/home/keti/ServerBMC_V3.01/build/archercity/tmp/work/x86_64-nativesdk-oesdk-linux/gcc-cross-canadian-arm/11.2.0-r0/recipe-sysroot-native/usr/arm-openbmc-linux-gnueabi/bin --with-sysroot=/not/exist --with-build-sysroot=/home/keti/ServerBMC_V3.01/build/archercity/tmp/work/x86_64-nativesdk-oesdk-linux/gcc-cross-canadian-arm/11.2.0-r0/recipe-sysroot --enable-standard-branch-protection --enable-poison-system-directories --disable-static --enable-nls --with-glibc-version=2.28 --enable-initfini-array]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 11.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/]
+  ignore line: [LIBRARY_PATH=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib/:/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/:/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='--sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi'  '-mfpu=vfpv4-d16' '-mfloat-abi=hard' '-v' '-rdynamic' '-o' 'cmTC_947d0' '-shared-libgcc' '-mtls-dialect=gnu' '-marm' '-mlibarch=armv7-a+vfpv4-d16' '-march=armv7-a+vfpv4-d16' '-dumpdir' 'cmTC_947d0.']
+  link line: [ /home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/collect2 -plugin /home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/liblto_plugin.so -plugin-opt=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFQ9YKj.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi --build-id --eh-frame-hdr --hash-style=gnu -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -pie -o cmTC_947d0 /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/Scrt1.o /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/crti.o /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/crtbeginS.o -L/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0 -L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib -L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0 -L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/crtendS.o /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/crtn.o]
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/libexec/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccFQ9YKj.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_947d0] ==> ignore
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/Scrt1.o] ==> ignore
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/crti.o] ==> ignore
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/crtbeginS.o] ==> ignore
+    arg [-L/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0] ==> dir [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0]
+    arg [-L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib] ==> dir [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib]
+    arg [-L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0] ==> dir [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0]
+    arg [-L/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib] ==> dir [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib]
+    arg [CMakeFiles/cmTC_947d0.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0/crtendS.o] ==> ignore
+    arg [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/crtn.o] ==> ignore
+  collapse library dir [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0] ==> [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0]
+  collapse library dir [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib] ==> [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib]
+  collapse library dir [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0] ==> [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0]
+  collapse library dir [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib] ==> [/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/lib/arm-openbmc-linux-gnueabi/gcc/arm-openbmc-linux-gnueabi/11.2.0;/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/lib;/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib/arm-openbmc-linux-gnueabi/11.2.0;/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++1z] compiler features compiled with the following output:
+Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_90752/fast"
+/usr/bin/make -f CMakeFiles/cmTC_90752.dir/build.make CMakeFiles/cmTC_90752.dir/build
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감
+Building CXX object CMakeFiles/cmTC_90752.dir/feature_tests.cxx.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi    -std=c++1z -o CMakeFiles/cmTC_90752.dir/feature_tests.cxx.o -c /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_90752
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90752.dir/link.txt --verbose=1
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi       -rdynamic CMakeFiles/cmTC_90752.dir/feature_tests.cxx.o  -o cmTC_90752 
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 나감
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c666a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c666a.dir/build.make CMakeFiles/cmTC_c666a.dir/build
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감
+Building CXX object CMakeFiles/cmTC_c666a.dir/feature_tests.cxx.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi    -std=c++14 -o CMakeFiles/cmTC_c666a.dir/feature_tests.cxx.o -c /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c666a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c666a.dir/link.txt --verbose=1
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi       -rdynamic CMakeFiles/cmTC_c666a.dir/feature_tests.cxx.o  -o cmTC_c666a 
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 나감
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_59fc5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_59fc5.dir/build.make CMakeFiles/cmTC_59fc5.dir/build
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감
+Building CXX object CMakeFiles/cmTC_59fc5.dir/feature_tests.cxx.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi    -std=c++11 -o CMakeFiles/cmTC_59fc5.dir/feature_tests.cxx.o -c /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_59fc5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59fc5.dir/link.txt --verbose=1
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi       -rdynamic CMakeFiles/cmTC_59fc5.dir/feature_tests.cxx.o  -o cmTC_59fc5 
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 나감
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1b17f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1b17f.dir/build.make CMakeFiles/cmTC_1b17f.dir/build
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 들어감
+Building CXX object CMakeFiles/cmTC_1b17f.dir/feature_tests.cxx.o
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi    -std=c++98 -o CMakeFiles/cmTC_1b17f.dir/feature_tests.cxx.o -c /home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_1b17f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1b17f.dir/link.txt --verbose=1
+/home/keti/KETI_BMC/KETI-APP/sysroots/x86_64-oesdk-linux/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-g++   -march=armv7-a -mfpu=vfpv4-d16 -mfloat-abi=hard --sysroot=/home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi       -rdynamic CMakeFiles/cmTC_1b17f.dir/feature_tests.cxx.o  -o cmTC_1b17f 
+make[1]: 디렉터리 '/home/keti/KETI_BMC/KETI-APP/ibmc_core/CMakeFiles/CMakeTmp' 나감
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates

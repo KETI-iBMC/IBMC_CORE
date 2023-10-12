@@ -1,5 +1,5 @@
 libs/CMakeFiles/apps.dir/ipmb/ipmb.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/ipmb/ipmb.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/ipmb/ipmb.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/errno.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/features.h \
@@ -185,7 +185,7 @@ libs/CMakeFiles/apps.dir/ipmb/ipmb.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/ostream.tcc \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/istream \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/istream.tcc \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/ipmb.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/ipmb.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/i2c-dev.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/types.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/asm/types.h \
@@ -780,17 +780,17 @@ libs/CMakeFiles/apps.dir/ipmb/ipmb.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/arm-openbmc-linux-gnueabi/bits/basic_file.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/arm-openbmc-linux-gnueabi/bits/c++io.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/fstream.tcc \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/ipmbdefines.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/ipmbdefines.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/unordered_map \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/hashtable.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/hashtable_policy.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/unordered_map.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/erase_if.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/lightning_sensor.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/common.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/lightning_sensor.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/common.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/sys/time.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/uuid/uuid.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/ipmi.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/ipmi.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/log/core.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/log/detail/config.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/boost/predef/os.h \
@@ -2140,15 +2140,15 @@ libs/CMakeFiles/apps.dir/ipmb/ipmb.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/random.tcc \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/numeric \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/stl_numeric.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/KETI_stdx.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/KETI_stdx.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/net/route.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/thread \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/std_thread.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/this_thread_sleep.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/queue \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/bits/stl_queue.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/ipmi/sensor_define.hpp \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/util/iniparser.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/ipmi/sensor_define.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/util/iniparser.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/iomanip \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/sys/ipc.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/bits/ipctypes.h \

@@ -2,7 +2,7 @@
 ## Execute file
 set(
     OUTPUT
-    KETI-IBMC
+    KETI-Edge
 )
 set (
     SOURCE_FILES

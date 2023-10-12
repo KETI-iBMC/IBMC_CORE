@@ -1,7 +1,7 @@
 libs/CMakeFiles/apps.dir/redfish/util.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/redfish/util.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/redfish/util.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/redfish/stdafx.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/redfish/stdafx.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/algorithm \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/utility \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/arm-openbmc-linux-gnueabi/bits/c++config.h \

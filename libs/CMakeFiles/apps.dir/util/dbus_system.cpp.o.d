@@ -1,7 +1,7 @@
 libs/CMakeFiles/apps.dir/util/dbus_system.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/util/dbus_system.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/util/dbus_system.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/redfish/stdafx.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/redfish/stdafx.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/algorithm \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/utility \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/c++/11.2.0/arm-openbmc-linux-gnueabi/bits/c++config.h \
@@ -2832,7 +2832,7 @@ libs/CMakeFiles/apps.dir/util/dbus_system.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/object.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/interface.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/connection.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/util/dbus_system.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/util/dbus_system.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/dbus.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/object.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/property.h \
@@ -2842,4 +2842,4 @@ libs/CMakeFiles/apps.dir/util/dbus_system.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/eventloop-integration.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/introspection.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/dbus-c++-1/dbus-c++/pipe.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/util/Sensor_Proxy.h
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/util/Sensor_Proxy.h

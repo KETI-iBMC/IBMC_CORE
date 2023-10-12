@@ -1,5 +1,5 @@
 libs/CMakeFiles/apps.dir/util/smbus.cpp.o: \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/libs/util/smbus.cpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/libs/util/smbus.cpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/stdc-predef.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/errno.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/features.h \
@@ -18,7 +18,7 @@ libs/CMakeFiles/apps.dir/util/smbus.cpp.o: \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/asm-generic/errno.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/asm-generic/errno-base.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/bits/types/error_t.h \
- /home/keti/KETI_BMC/KETI-APP/ibmc_core/include/util/smbus.hpp \
+ /home/keti/KETI_BMC/KETI-APP/app_highend/include/util/smbus.hpp \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/linux/types.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/asm/types.h \
  /home/keti/KETI_BMC/KETI-APP/sysroots/armv7ahf-vfpv4d16-openbmc-linux-gnueabi/usr/include/asm/types-32.h \

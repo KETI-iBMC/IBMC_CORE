@@ -293,6 +293,24 @@ void Handler::handle_get(http_request _request) {
     rec_string.clear();
     if (uri_tokens.size() == 1 && uri_tokens[0] == "redfish") {
       json::value j;
+      // cout << jv.serialize() << endl;
+      string cmm_address = jv["CMMIP"].to_string();
+      INI::File ft;
+
+      std::string result_string;
+
+      // 문자열을 순회하면서 큰따옴표를 제외한 문자를 새 문자열에 추가
+      for (char character : cmm_address) {
+        if (character != '"') {
+          result_string += character;
+        }
+      }
+      cout << "result_string" << endl;
+      // if (!ft.Load("/conf/ibmcipconf")) {
+      ft.GetSection("Address")->SetValue("CMM", result_string);
+      // ft.GetSection("Address")->SetValue("Host", this->host_address);
+      ft.Save("/conf/ibmcipconf");
+      ft.Unload();
       j[U(REDFISH_VERSION)] = json::value::string(U(ODATA_SERVICE_ROOT_ID));
       // report_last_command(uri);
       _request.reply(status_codes::OK, j);
