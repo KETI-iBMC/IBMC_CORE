@@ -4,14 +4,14 @@
 #include "redfish/resource.hpp"
 #include "redfish/stdafx.hpp"
 #include <ipmi/user.hpp>
+#include <redfish/logservice.hpp>
 #include <util/iniparser.hpp>
 extern Ipmiuser ipmiUser[MAX_USER];
 map<string, string> timezones;
 unsigned int g_count = 0;
 extern ServiceRoot *g_service_root;
-
+string Handler::cmm_ip = "";
 static bool init_ntpzone() {
-
   timezones["AE"] = "+04:00";
   timezones["AU"] = "+10:00";
   timezones["BD"] = "+06:00";
@@ -289,12 +289,20 @@ void Handler::handle_get(http_request _request) {
       _request.reply(status_codes::OK, j);
       return;
     }
-
+    if (uri_tokens[0] == "agentwatt") {
+      json::value j;
+      int watt = jv["watt"].as_double();
+      insert_reading_table("AGENT_POWER", "CM1", "power", "powersupply", watt,
+                           DB_currentDateTime());
+      _request.reply(status_codes::OK, j);
+      return;
+    }
     rec_string.clear();
     if (uri_tokens.size() == 1 && uri_tokens[0] == "redfish") {
       json::value j;
       // cout << jv.serialize() << endl;
       string cmm_address = jv["CMMIP"].to_string();
+
       INI::File ft;
 
       std::string result_string;
@@ -305,9 +313,9 @@ void Handler::handle_get(http_request _request) {
           result_string += character;
         }
       }
-      cout << "result_string" << endl;
       // if (!ft.Load("/conf/ibmcipconf")) {
       ft.GetSection("Address")->SetValue("CMM", result_string);
+      this->cmm_ip = result_string;
       // ft.GetSection("Address")->SetValue("Host", this->host_address);
       ft.Save("/conf/ibmcipconf");
       ft.Unload();
@@ -528,12 +536,81 @@ void Handler::handle_get(http_request _request) {
       _request.reply(rest_response);
       return;
     }
+    if (uri_tokens[0] == "feedbackLog_latest") {
+      Ipmiweb_GET::feedbackLog_latest(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "feedbackLog_module") {
+      Ipmiweb_GET::feedbackLog_module(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "feedbackLog_cause") {
+      Ipmiweb_GET::feedbackLog_cause(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "feedbackLog_proceed") {
+      Ipmiweb_GET::feedbackLog_proceed(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "faultAnalysisDiskReport_nvme0") {
+      Ipmiweb_GET::faultAnalysisDiskReport_nvme0(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "slot") {
+      Ipmiweb_GET::getslot(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "fans") {
+      Ipmiweb_GET::getsfans(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
     if (uri_tokens[0] == "log") {
       // /log/~ uri를 처리하는 함수
       log_operation(_request);
       return;
     }
-
+    if (uri_tokens[0] == "energygraph") {
+      Ipmiweb_GET::energygraph(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "fofl") {
+      Ipmiweb_GET::fofllist(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
+    if (uri_tokens[0] == "faultAnalysisOverallMonitoring_storage") {
+      Ipmiweb_GET::faultAnalysisOverallMonitoring_storage(jv);
+      rest_response.set_body(jv);
+      rest_response.set_status_code(status_codes::OK);
+      _request.reply(rest_response);
+      return;
+    }
     if (uri_tokens[0] == "kvm-image") {
       rest_response.set_status_code(status_codes::OK);
       // _request.reply(rest_response);
@@ -895,6 +972,10 @@ void Handler::handle_put(http_request _request) {
       // report_last_command(uri);
       _request.reply(status_codes::OK, j);
       return;
+    }
+    if (uri_tokens[0] == "fofl") {
+      Ipmiweb_GET::fofllist(jv);
+      rest_response.set_body(jv);
     }
 
     cout << "end handler " << endl;

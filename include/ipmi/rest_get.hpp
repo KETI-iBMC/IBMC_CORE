@@ -37,6 +37,24 @@ public:
   static void Get_Watt_Info(int menu, json::value &response_json);
   static void reading_Temp(json::value &_response);
   static void reading_Temp_Include_Cpu(json::value &_response);
+  /// ibmc 전용
+  static void faultAnalysisDiskReport_nvme0(json::value &_response);
+  static void faultAnalysisOverallMonitoring_storage(json::value &_response);
+  static void faultAnalysisFoflPolicyCpu(json::value &_response);
+  static void faultAnalysisFoflPolicyMemory(json::value &_response);
+  static void faultAnalysisFoflPolicyCabinet(json::value &_response);
+  static void feedbackLog_module(json::value &_response);
+  static void feedbackLog_cause(json::value &_response);
+  static void feedbackLog_proceed(json::value &_response);
+  static void feedbackLog_latest(json::value &_response);
+  static void getsfans(json::value &_response);
+  static void getslot(json::value &_response);
+  static void energygraph(json::value &_response);
+  static void
+  energySavingCpuPowerCapping_cpuValuesMonitoring(json::value &_response);
+  static void energySavingCpuPowerCapping_cpuControl(json::value &_response);
+  static void fofllist(json::value &_response);
+
   // static void signalHandler(int signo);
 };
 static int rest_send_to_kvm();

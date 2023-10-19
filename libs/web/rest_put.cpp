@@ -398,3 +398,58 @@ void Ipmiweb_PUT::mq_key_send(json::value request_json) {
     return;
   }
 }
+void Ipmiweb_PUT::Set_fofl(json::value request_json) {
+  string s_name, thresh;
+  int num = 0;
+  json::value temp;
+  int green, yellow, orange, red;
+  int g_a, y_a, o_a, r_a;
+  float th_data[10] = {0};
+  json::value myobj;
+  // strncpy(data, hm->body.p, b_len);
+  // string sdata((char *)data);
+  // cout << "sdata in sensor_call : " << sdata << endl;
+
+  // myobj = json::value::parse(sdata);
+
+  s_name = request_json.at("SENSOR").as_string();
+  green = stoi(request_json.at("GREEN").as_string());
+  yellow = stoi(request_json.at("YELLOW").as_string());
+  orange = stoi(request_json.at("ORANGE").as_string());
+  red = stof(request_json.at("RED").as_string());
+  g_a = stoi(request_json.at("GREEN_ACTIVATE").as_string());
+  y_a = stoi(request_json.at("YELLOW_ACTIVATE").as_string());
+  o_a = stoi(request_json.at("ORANGE_ACTIVATE").as_string());
+  r_a = stoi(request_json.at("ORANGE_ACTIVATE").as_string());
+  std::string filePath = "/conf/fofllist.json";
+  json::value existingJson;
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> existingJson;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    log(info) << "error. not open fofl json" << endl;
+
+    return;
+  }
+  json::array &sensors = existingJson[U("SENSOR_INFO")][U("SENSOR")].as_array();
+  for (auto &sensor : sensors) {
+    if (sensor[U("NAME")].as_string() == s_name) {
+      sensor[U("GREEN")] = json::value::number(green);
+      sensor[U("YELLOW")] = json::value::number(yellow);
+      sensor[U("ORANGE")] = json::value::number(orange);
+      sensor[U("RED")] = json::value::number(red);
+      sensor[U("GREEN_ACTIVATE")] = json::value::number(g_a);
+      sensor[U("YELLOW_ACTIVATE")] = json::value::number(y_a);
+      sensor[U("ORANGE_ACTIVATE")] = json::value::number(o_a);
+      sensor[U("RED_ACTIVATE")] = json::value::number(r_a);
+      break; // Assuming sensor names are unique
+    }
+  }
+
+  // Save the updated JSON back to the file
+  std::ofstream outputFile(filePath);
+  outputFile << existingJson.serialize();
+  outputFile.close();
+}

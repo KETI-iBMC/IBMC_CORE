@@ -2703,7 +2703,6 @@ public:
   string id;
   string redfish_version;
   string uuid;
-
   Systems *system;
   Chassis *chassis;
   Manager *manager;

@@ -1552,3 +1552,456 @@ void Ipmiweb_GET::reading_Temp_Include_Cpu(json::value &_response) {
       getMinGraphData("CPU1_TEMP", 1);
   return;
 }
+
+void Ipmiweb_GET::faultAnalysisDiskReport_nvme0(json::value &_response) {
+  std::string filePath = "/conf/smartInfo.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::faultAnalysisOverallMonitoring_storage(
+    json::value &_response) {
+  std::string filePath = "/conf/diskscore.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+
+void faultAnalysisFoflPolicyCpu(json::value &_response) {
+  std::string filePath = "conf/test.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::faultAnalysisFoflPolicyMemory(json::value &_response) {
+  std::string filePath = "/conf/test.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::faultAnalysisFoflPolicyCabinet(json::value &_response) {
+  std::string filePath = "/conf/test.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::feedbackLog_module(json::value &_response) {
+  std::string filePath = "/conf/feedbackLog_module.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::getsfans(json::value &_response) {
+  std::string filePath = "/conf/fans.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::feedbackLog_cause(json::value &_response) {
+  std::string filePath = "/conf/feedbackLog_cause.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::feedbackLog_proceed(json::value &_response) {
+  std::string filePath = "/conf/feedbackLog_proceed.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::feedbackLog_latest(json::value &_response) {
+  std::string filePath = "/conf/feedbackLog_latest.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::energySavingCpuPowerCapping_cpuValuesMonitoring(
+    json::value &_response) {
+  std::string filePath = "/conf/test.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::energySavingCpuPowerCapping_cpuControl(
+    json::value &_response) {
+  std::string filePath = "/conf/test.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    std::cerr << "not open json file." << std::endl;
+  }
+  return;
+}
+void Ipmiweb_GET::getslot(json::value &_response) {
+  char buff[32];
+  FILE *fp;
+  fp = popen("gpioget 0 143 142 141", "r");
+
+  if (NULL == fp) {
+    perror("popen() failed");
+    return;
+  }
+  while (fgets(buff, 32, fp)) {
+    printf("%s\n", buff);
+  }
+  close(fp);
+  string num;
+  if (strstr(buff, "0 0 0")) {
+    num = "1";
+  } else if (strstr(buff, "0 0 1")) {
+    num = "2";
+  } else if (strstr(buff, "0 1 0")) {
+    num = "3";
+  } else if (strstr(buff, "0 1 0")) {
+    num = "4";
+  }
+  _response["slot"] = json::value::string(num);
+  return;
+}
+
+void Ipmiweb_GET::energygraph(json::value &_response) {
+  string param_type, param_detail, param_time_option;
+  _response["POWER_USAGE"]["GRAPH_DATA"]["PSU1"]["MIN_GRAPH"] =
+      getMinGraphData("AGENT_POWER", 15);
+  return;
+}
+
+void Ipmiweb_GET::fofllist(json::value &_response) {
+  std::string filePath = "/conf/fofllist.json";
+  std::ifstream inputFile(filePath);
+  if (inputFile.is_open()) {
+    inputFile >> _response;
+    // std::wcout << L"JSON 데이터:\n" << _response.serialize() << std::endl;
+    inputFile.close();
+  } else {
+    json::value newJson;
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("NAME")] =
+        json::value::string(U("CPU"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("NUMBER")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][0][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("NAME")] =
+        json::value::string(U("CPU0_DIMM1_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("NUMBER")] =
+        json::value::number(2);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][1][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("NAME")] =
+        json::value::string(U("CPU0_DIMM2_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("NUMBER")] =
+        json::value::number(3);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][2][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("NAME")] =
+        json::value::string(U("CPU0_DIMM3_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("NUMBER")] =
+        json::value::number(4);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][3][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("NAME")] =
+        json::value::string(U("CPU0_DIMM4_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("NUMBER")] =
+        json::value::number(5);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][4][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("NAME")] =
+        json::value::string(U("CPU0_DIMM5_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("NUMBER")] =
+        json::value::number(6);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][5][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("NAME")] =
+        json::value::string(U("CPU0_DIMM6_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("NUMBER")] =
+        json::value::number(7);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][6][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("NAME")] =
+        json::value::string(U("CPU0_DIMM7_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("NUMBER")] =
+        json::value::number(8);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][7][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("NAME")] =
+        json::value::string(U("CPU0_DIMM8_TEMP"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("NUMBER")] =
+        json::value::number(9);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][8][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("NAME")] =
+        json::value::string(U("NVME0"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("NUMBER")] =
+        json::value::number(10);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][9][U("RED_ACTIVATE")] =
+        json::value::number(1);
+
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("GREEN")] =
+        json::value::number(65);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("YELLOW")] =
+        json::value::number(70);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("ORANGE")] =
+        json::value::number(80);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("RED")] =
+        json::value::number(85);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("NAME")] =
+        json::value::string(U("Cabinet"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("NUMBER")] =
+        json::value::number(11);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("STATE")] =
+        json::value::string(U("GREEN"));
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("GREEN_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("YELLOW_ACTIVATE")] =
+        json::value::number(1);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("ORANGE_ACTIVATE")] =
+        json::value::number(0);
+    newJson[U("SENSOR_INFO")][U("SENSOR")][10][U("RED_ACTIVATE")] =
+        json::value::number(1);
+    _response = newJson;
+
+    // Save the new JSON to the file
+    std::ofstream outputFile(filePath);
+    outputFile << newJson.serialize();
+    outputFile.close();
+  }
+  return;
+}

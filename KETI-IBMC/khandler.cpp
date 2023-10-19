@@ -1698,80 +1698,60 @@ void *psu_db_handler(void) {
         // log(error) << " [ERROR POSITION 2]";
       }
     } else {
-      // log(error) << " [ERROR POSITION 4]";
-      log(warning) << "psu1 odata : " << psu1->odata.id;
-      log(warning) << "psu1 VALUE : " << psu1->reading;
-      psu1_value = psu1->reading * 60;
+      if (Handler::cmm_ip == "") {
+        sleep(1);
+        continue;
+      }
+
+      http_client_config config;
+      http_client client("http://" + Handler::cmm_ip + ":8000", config);
+      /// redfish/v1/getPSUValues
+      http_request req(methods::GET);
+      req.set_request_uri("/redfish/v1/getPSUValues");
+      http_response res;
+      json::value info;
+      try {
+        /* code */
+        pplx::task<http_response> responseTask = client.request(req);
+        res = responseTask.get();
+
+      } catch (const std::exception &e) {
+        std::ostringstream oss;
+        oss << "\033[1;" << 35 << "m"; // magenta
+        std::cout << oss.str();
+
+        std::cerr << e.what() << '\n';
+        log(warning) << "CMM 정보요청 실패";
+        log(warning) << "fail uri : "
+                     << "/redfish/v1/getPSUValues";
+
+        std::cout << "\033[0m";
+      }
+
+      // cout << res.status_code() << endl;
+      info = res.extract_json().get();
+
+      // psu1_value = psu1->reading * 60;
+      psu1_value =
+          info["PSU0"]["SMBusIPMIFRU"]["InputPower"]["Value"].as_integer() * 60;
       insert_reading_table("P12V_PSU1", "CM1", "power", "powersupply",
                            psu1_value, DB_currentDateTime());
-    }
 
-    if (psu2 == nullptr) {
-      if (record_is_exist(odata_psu2)) {
-        psu2 = (Sensor *)g_record[odata_psu2];
-        // log(error) << " [ERROR POSITION 3]";
-      }
-    } else {
-      // log(error) << " [ERROR POSITION 5]";
-      // log(warning) << "psu2 odata : " << psu2->odata.id;
-      // log(warning) << "psu2 VALUE : " << psu2->reading;
-      psu2_value = psu2->reading * 60;
+      // if (psu2 == nullptr) {
+      //   if (record_is_exist(odata_psu2)) {
+      //     psu2 = (Sensor *)g_record[odata_psu2];
+      //     // log(error) << " [ERROR POSITION 3]";
+      //   }
+      // } else {
+
+      // psu2_value = psu2->reading * 60;
+      psu2_value =
+          info["PSU1"]["SMBusIPMIFRU"]["InputPower"]["Value"].as_integer() * 60;
       insert_reading_table("P12V_PSU2", "CM1", "power", "powersupply",
                            psu2_value, DB_currentDateTime());
     }
     // log(error) << " [ERROR POSITION 7]";
+    // sleep(1);
     usleep(60000000);
   }
 }
-// void *random_db_data_handler(void) {
-//   // BMC 다 PC, PV, SH,, Fan/Temp/PSU는 제외?
-//   double temp_value[21] = {25,   25.5, 26,   26.5, 27,   27.5, 28,
-//                            28.5, 29,   29.5, 30,   30.5, 31,   31.5,
-//                            32,   32.5, 33,   33.5, 34,   34.5, 35};
-//   double psu_value[13] = {15,   15.5, 16,   16.5, 17,   17.5, 18,
-//                           18.5, 19,   19.5, 20,   20.5, 21};
-//   double pv_value[19] = {6,  6.5,  7,  7.5,  8,  8.5,  9,  9.5,  10, 10.5,
-//                          11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15};
-//   double pc_value[17] = {300, 330, 350, 380, 400, 430, 450, 480, 500,
-//                          530, 550, 580, 600, 630, 650, 680, 700};
-
-//   while (1) {
-//     srand((unsigned int)time(NULL));
-
-//     double temp, psu, pv, pc, sh;
-
-//     temp = temp_value[rand() % 21];
-//     psu = psu_value[rand() % 13];
-//     pv = pv_value[rand() % 19];
-//     pc = pc_value[rand() % 17];
-//     sh = temp_value[rand() % 21];
-
-//     // insert_reading_table("Temp 1", "CM", "thermal", "temperature", temp,
-//     // DB_currentDateTime()); insert_reading_table("PSU 1", "CM", "power",
-//     // "powersupply", psu, DB_currentDateTime());
-//     insert_reading_table("PV 1", "CM", "power", "powervoltage", pv,
-//                          DB_currentDateTime());
-//     insert_reading_table("PC 1", "CM", "power", "powercontrol", pc,
-//                          DB_currentDateTime());
-//     insert_reading_table("SH 1", "CM", "thermal", "smartheater", sh,
-//                          DB_currentDateTime());
-
-//     temp = temp_value[rand() % 21];
-//     psu = psu_value[rand() % 13];
-//     pv = pv_value[rand() % 19];
-//     pc = pc_value[rand() % 17];
-//     sh = temp_value[rand() % 21];
-
-//     // insert_reading_table("Temp 2", "CM5", "thermal", "temperature", temp,
-//     // DB_currentDateTime()); insert_reading_table("PSU 2", "CM5", "power",
-//     // "powersupply", psu, DB_currentDateTime());
-//     insert_reading_table("PV 2", "CM5", "power", "powervoltage", pv,
-//                          DB_currentDateTime());
-//     insert_reading_table("PC 2", "CM5", "power", "powercontrol", pc,
-//                          DB_currentDateTime());
-//     insert_reading_table("SH 2", "CM5", "thermal", "smartheater", sh,
-//                          DB_currentDateTime());
-
-//     usleep(60000000);
-//   }
-// }

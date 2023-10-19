@@ -18,6 +18,7 @@ public:
 
   static void Set_Setting(json::value request_json);
   static void mq_key_send(json::value request_json);
+  static void Set_fofl(json::value request_json);
   // static void rest_set_fru_board(int id,char f_mfg_date[4], string f_mfg,
   // string f_product, string f_serial, string f_part_num);
 };
