@@ -2,7 +2,6 @@
 cmake_minimum_required(
     VERSION 3.2
 )
-
 # Project information
 # CMake system name must be something like "Linux".
 # This is important for cross-compiling.
